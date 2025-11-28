@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Espera - DeepXperience</title>
+    <meta name="description"
+        content="Únete a la lista de espera de DeepXperience y asegura tu lugar en nuestras próximas aventuras.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- EmailJS SDK para emails profesionales -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        /* Estilos específicos para la página de lista de espera */
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("Imagenes/Portada.jpg") center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            opacity: 1 !important;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 60px;
+        }
+
+        .waitlist-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            max-width: 1200px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .waitlist-info {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .waitlist-info h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            color: #ffffff;
+            line-height: 1.1;
+        }
+
+        .waitlist-info .highlight {
+            color: #f59b22;
+        }
+
+        .waitlist-info p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .waitlist-benefits {
+            margin-top: 30px;
+        }
+
+        .waitlist-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .waitlist-benefits li {
+            font-size: 16px;
+            padding: 12px 0;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .waitlist-benefits li i {
+            color: #f59b22;
+            font-size: 18px;
+        }
+
+        .waitlist-form {
+            flex: 1;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .language-toggle button {
+            background: transparent;
+            border: none;
+            color: #999;
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .language-toggle button.active {
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            color: #000;
+        }
+
+        .language-toggle button:hover:not(.active) {
+            color: #f59b22;
+        }
+
+        .waitlist-form h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .waitlist-form>p {
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #999;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            color: #cccccc;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .waitlist-form input,
+        .waitlist-form select {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        /* FIX: Fondo oscuro para las opciones del select */
+        .waitlist-form select option {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 12px;
+        }
+
+        .waitlist-form select option:hover {
+            background-color: #2a2a2a;
+        }
+
+        /* Mejorar apariencia del select cuando está abierto */
+        .waitlist-form select:focus option:checked {
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            color: #000;
+        }
+
+        .waitlist-form input:focus,
+        .waitlist-form select:focus {
+            outline: none;
+            border-color: #f59b22;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .waitlist-form input::placeholder {
+            color: #666;
+        }
+
+        /* Phone Input con Country Code */
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-input-group select {
+            flex: 0 0 120px;
+        }
+
+        .phone-input-group input {
+            flex: 1;
+        }
+
+        .waitlist-form button[type="submit"] {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 10px;
+        }
+
+        .waitlist-form button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 155, 34, 0.4);
+        }
+
+        .waitlist-form button[type="submit"]:active {
+            transform: translateY(-1px);
+        }
+
+        .spam-note {
+            font-size: 13px;
+            color: #666;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .waitlist-logo {
+            display: block;
+            width: 130px;
+            margin: 30px auto 0;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .waitlist-logo:hover {
+            opacity: 1;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            background: #000000;
+            padding: 30px 80px 20px;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                padding: 100px 20px 40px;
+            }
+
+            .waitlist-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .waitlist-info {
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .waitlist-info h1 {
+                font-size: 42px;
+            }
+
+            .waitlist-benefits {
+                max-width: 400px;
+                margin: 30px auto 0;
+            }
+
+            .waitlist-benefits li {
+                justify-content: center;
+            }
+
+            .waitlist-form {
+                max-width: 100%;
+                padding: 40px 30px;
+            }
+
+            footer {
+                padding: 30px 20px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .waitlist-info h1 {
+                font-size: 36px;
+                letter-spacing: 2px;
+            }
+
+            .waitlist-info p {
+                font-size: 16px;
+            }
+
+            .waitlist-form {
+                padding: 35px 25px;
+            }
+
+            .waitlist-form h2 {
+                font-size: 28px;
+            }
+
+            .phone-input-group {
+                flex-direction: column;
+            }
+
+            .phone-input-group select {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="waitlist-page">
+
+    <main>
+        <div class="waitlist-container">
+            <!-- Info Section -->
+            <div class="waitlist-info">
+                <h1 data-lang-es="TRAVESÍA <span class='highlight'>2026</span>" data-lang-en="JOURNEY <span class='highlight'>2026</span>"></h1>
+                <p data-lang-es="La aventura de viaje más memorable próxima a revelarse, con grandes sorpresas. Asegura tu lugar exclusivo en el lanzamiento."
+                   data-lang-en="The most memorable travel adventure coming soon, with big surprises. Secure your exclusive spot at launch."></p>
+
+                <div class="waitlist-benefits">
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Acceso anticipado a nuevas experiencias" data-lang-en="Early access to new experiences"></span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Descuentos exclusivos para miembros" data-lang-en="Exclusive member discounts"></span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Información privilegiada de destinos" data-lang-en="Privileged destination information"></span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Prioridad en reservas limitadas" data-lang-en="Priority in limited bookings"></span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Form Section -->
+            <div class="waitlist-form">
+                <!-- Language Toggle -->
+                <div class="language-toggle">
+                    <button class="lang-btn active" data-lang="es" onclick="switchLanguage('es')">ES</button>
+                    <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                </div>
+
+                <h2 data-lang-es="ÚNETE A LA LISTA" data-lang-en="JOIN THE LIST"></h2>
+                <p data-lang-es="Asegura tu lugar ahora" data-lang-en="Secure your spot now"></p>
+
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> <span data-lang-es="¡Gracias! Revisa tu email para confirmar." data-lang-en="Thank you! Check your email to confirm."></span>
+                </div>
+
+                <form id="waitlistForm" action="https://formsubmit.co/deybijimene94@gmail.com" method="POST">
+
+                    <!-- CONFIGURACIÓN OCULTA DE FORMSUBMIT -->
+                    <input type="hidden" name="_cc" value="joaquinurzuad@gmail.com">
+                    <input type="hidden" name="_next" value="https://www.deepxperience.cl/gracias.html">
+                    <input type="hidden" name="_subject" value="🎉 Nueva persona en lista de espera - Travesía 2026">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="box">
+
+                    <!-- CAMPOS DEL FORMULARIO -->
+
+                    <div class="form-group">
+                        <label for="nombre" data-lang-es="Nombre completo *" data-lang-en="Full name *"></label>
+                        <input type="text" id="nombre" name="nombre" placeholder="" data-placeholder-es="Tu nombre" data-placeholder-en="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="" data-placeholder-es="tu@email.com" data-placeholder-en="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pais" data-lang-es="País *" data-lang-en="Country *"></label>
+                        <select id="pais" name="pais" required>
+                            <option value="">-- <span data-lang-es="Selecciona tu país" data-lang-en="Select your country"></span> --</option>
+                            <option value="+54">🇦🇷 Argentina (+54)</option>
+                            <option value="+55">🇧🇷 Brasil (+55)</option>
+                            <option value="+56" selected>🇨🇱 Chile (+56)</option>
+                            <option value="+57">🇨🇴 Colombia (+57)</option>
+                            <option value="+506">🇨🇷 Costa Rica (+506)</option>
+                            <option value="+593">🇪🇨 Ecuador (+593)</option>
+                            <option value="+34">🇪🇸 España (+34)</option>
+                            <option value="+1">🇺🇸 Estados Unidos (+1)</option>
+                            <option value="+52">🇲🇽 México (+52)</option>
+                            <option value="+507">🇵🇦 Panamá (+507)</option>
+                            <option value="+51">🇵🇪 Perú (+51)</option>
+                            <option value="+598">🇺🇾 Uruguay (+598)</option>
+                            <option value="+58">🇻🇪 Venezuela (+58)</option>
+                            <option value="otro" data-lang-es="Otro país" data-lang-en="Other country">🌍 Otro / Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono" data-lang-es="Teléfono (opcional)" data-lang-en="Phone (optional)"></label>
+                        <div class="phone-input-group">
+                            <select id="countryCode" name="codigo_pais">
+                                <option value="+54">🇦🇷 +54</option>
+                                <option value="+55">🇧🇷 +55</option>
+                                <option value="+56" selected>🇨🇱 +56</option>
+                                <option value="+57">🇨🇴 +57</option>
+                                <option value="+506">🇨🇷 +506</option>
+                                <option value="+593">🇪🇨 +593</option>
+                                <option value="+34">🇪🇸 +34</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+52">🇲🇽 +52</option>
+                                <option value="+507">🇵🇦 +507</option>
+                                <option value="+51">🇵🇪 +51</option>
+                                <option value="+598">🇺🇾 +598</option>
+                                <option value="+58">🇻🇪 +58</option>
+                            </select>
+                            <input type="tel" id="telefono" name="telefono" placeholder="" data-placeholder-es="9 1234 5678" data-placeholder-en="9 1234 5678">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interes" data-lang-es="¿Qué tipo de experiencia te interesa?" data-lang-en="What type of experience interests you?"></label>
+                        <select id="interes" name="experiencia_interes">
+                            <option value="" data-lang-es="Selecciona una opción" data-lang-en="Select an option">-- Selecciona --</option>
+                            <option value="Patagonia" data-lang-es="Patagonia" data-lang-en="Patagonia">Patagonia</option>
+                            <option value="Azores" data-lang-es="Azores" data-lang-en="Azores">Azores</option>
+                            <option value="Buceo" data-lang-es="Buceo" data-lang-en="Diving">Buceo / Diving</option>
+                            <option value="Trekking">Trekking</option>
+                            <option value="Todas" data-lang-es="Todas las experiencias" data-lang-en="All experiences">Todas / All</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> <span data-lang-es="Guarda mi lugar" data-lang-en="Save my spot"></span>
+                    </button>
+                </form>
+
+                <p class="spam-note">
+                    <i class="fas fa-shield-alt"></i> <span data-lang-es="No enviamos spam. Puedes darte de baja cuando quieras." data-lang-en="We don't send spam. You can unsubscribe anytime."></span>
+                </p>
+
+                <a href="index.html">
+                    <img src="Iconos/Logo-06.png" alt="DeepXperience" class="waitlist-logo">
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript para Language Toggle -->
+    <script>
+        let currentLang = 'es';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update all elements with translations
+            document.querySelectorAll('[data-lang-es]').forEach(elem => {
+                const text = elem.getAttribute(`data-lang-${lang}`);
+                if (elem.tagName === 'H1') {
+                    elem.innerHTML = text;
+                } else {
+                    elem.textContent = text;
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-placeholder-es]').forEach(elem => {
+                elem.placeholder = elem.getAttribute(`data-placeholder-${lang}`);
+            });
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Auto-sync country code with country selection
+        document.getElementById('pais').addEventListener('change', function() {
+            const countryCode = this.value;
+            if (countryCode && countryCode !== 'otro') {
+                document.getElementById('countryCode').value = countryCode;
+            }
+        });
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            if (savedLang !== 'es') {
+                switchLanguage(savedLang);
+            }
+
+            // Set initial placeholders
+            switchLanguage(savedLang);
+        });
+    </script>
+
+    <!-- JavaScript modular con ES6 modules -->
+    <script type="module" src="js/waitlist-form.js"></script>
+
+    <!-- Fallback para asegurar visibilidad -->
+    <script>
+        document.body.style.opacity = "1";
+    </script>
+</body>
+
+</html>

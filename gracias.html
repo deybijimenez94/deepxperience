@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! - DeepXperience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #f59b22;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(245, 155, 34, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #f59b22;
+            transform: translateY(-5px);
+        }
+
+        .next-steps {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 2px;
+            color: #f59b22;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .next-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .next-steps i {
+            color: #f59b22;
+            font-size: 24px;
+            width: 30px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: #fff;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: #999;
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>¡BIENVENIDO A BORDO!</h1>
+        <p style="font-size: 20px; color: #f59b22;"><strong>Tu registro ha sido exitoso.</strong></p>
+        <p>Acabas de asegurar tu lugar en la <strong>Travesía 2026</strong>.</p>
+        <p>Revisa tu email (incluyendo spam) para confirmar tu registro.</p>
+
+        <!-- Próximos pasos -->
+        <div class="next-steps">
+            <h3>📋 Próximos Pasos</h3>
+            <ul>
+                <li>
+                    <i class="fas fa-envelope-open-text"></i>
+                    <div class="step-content">
+                        <strong>1. Revisa tu email</strong>
+                        <p>Te enviamos un correo de confirmación con todos los detalles y beneficios exclusivos.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fab fa-instagram"></i>
+                    <div class="step-content">
+                        <strong>2. Síguenos en Instagram</strong>
+                        <p>Entérate de todas las novedades y adelantos exclusivos: <a href="https://instagram.com/deepxperiences" style="color: #f59b22;">@deepxperiences</a></p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="step-content">
+                        <strong>3. Únete a WhatsApp</strong>
+                        <p>Únete a nuestro grupo VIP para recibir ofertas especiales y actualizaciones directas.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="step-content">
+                        <strong>4. Espera noticias</strong>
+                        <p>En las próximas semanas recibirás información exclusiva sobre destinos, fechas y precios especiales.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/deepxperiences/" class="social-link" aria-label="Instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/56923809564?text=Hola!%20Me%20registré%20en%20la%20lista%20de%20espera%20de%20Travesía%202026" class="social-link" aria-label="WhatsApp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:info@deepxperience.cl" class="social-link" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+
+        <a href="index.html" class="cta-button">Explorar DeepXperience</a>
+    </div>
+</body>
+
+</html>

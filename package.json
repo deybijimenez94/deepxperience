@@ -1,0 +1,16 @@
+{
+  "name": "pagina-deepx",
+  "version": "1.0.0",
+  "description": "Website optimization",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sharp": "^0.33.3",
+    "glob": "^10.3.10"
+  }
+}

@@ -1,0 +1,71 @@
+===================================================
+COPIAR TODO ESTE CONTENIDO EN EMAILJS
+Template: Confirmación al Usuario
+===================================================
+
+SUBJECT:
+🌍 ¡Bienvenido a la Travesía 2026!
+
+CONTENT (HTML):
+Abre el archivo: email-templates/template-confirmacion-usuario.html
+Copia TODO el contenido (desde <!DOCTYPE hasta </html>)
+Pega en el campo "Content" de EmailJS
+
+ALTERNATIVA RÁPIDA:
+Si no puedes copiar el HTML completo, usa este contenido simplificado:
+
+---
+
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f4f4f4;">
+    <div style="background: #000; padding: 40px; text-align: center; border-radius: 10px 10px 0 0;">
+        <h1 style="color: #f59b22; margin: 0;">¡BIENVENIDO A BORDO!</h1>
+    </div>
+
+    <div style="background: white; padding: 40px; border-radius: 0 0 10px 10px;">
+        <p style="font-size: 18px; color: #333;">Hola <strong>{{user_name}}</strong>,</p>
+
+        <p style="color: #555;">¡Gracias por unirte a nuestra lista de espera para la <strong style="color: #f59b22;">Travesía 2026</strong>! 🌍</p>
+
+        <p style="color: #555;">Estás oficialmente en la lista y serás uno de los primeros en conocer todos los detalles.</p>
+
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #f59b22; margin-top: 0;">🎁 BENEFICIOS EXCLUSIVOS:</h3>
+            <ul style="color: #555;">
+                <li>✅ Acceso anticipado antes que nadie</li>
+                <li>✅ Descuentos de hasta 20% OFF</li>
+                <li>✅ Información privilegiada de destinos</li>
+                <li>✅ Prioridad en reservas limitadas</li>
+            </ul>
+        </div>
+
+        <div style="background: #f0f0f0; padding: 15px; border-radius: 8px; margin: 20px 0;">
+            <h4 style="margin-top: 0;">📋 Tus datos registrados:</h4>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>Email:</strong> {{user_email}}</p>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>Teléfono:</strong> {{user_phone}}</p>
+            <p style="margin: 5px 0; font-size: 14px;"><strong>Interés:</strong> {{experience_interest}}</p>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://www.deepxperience.cl" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, #f59b22, #ff8800); color: #000; text-decoration: none; border-radius: 50px; font-weight: bold;">Visitar DeepXperience</a>
+        </div>
+
+        <p style="color: #555;">Prepárate para algo increíble...</p>
+        <p style="color: #555;">¡Nos vemos en la aventura! 🚀</p>
+
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
+
+        <div style="text-align: center;">
+            <p style="color: #999; font-size: 14px; margin: 5px 0;"><strong style="color: #f59b22;">Joaquín y Bárbara</strong></p>
+            <p style="color: #999; font-size: 14px; margin: 5px 0;">DeepXperience</p>
+            <p style="color: #999; font-size: 12px; margin: 5px 0;">
+                <a href="https://www.instagram.com/deepxperiences/" style="color: #f59b22;">Instagram</a> |
+                <a href="https://wa.me/56958055597" style="color: #25D366;">WhatsApp</a> |
+                <a href="mailto:info@deepxperience.cl" style="color: #00d4ff;">Email</a>
+            </p>
+            <p style="color: #999; font-size: 11px; margin: 20px 0 0 0;">© {{current_year}} DeepXperience</p>
+        </div>
+    </div>
+</body>
+</html>
