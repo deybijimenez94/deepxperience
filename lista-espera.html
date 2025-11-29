@@ -222,17 +222,105 @@
             color: #666;
         }
 
-        /* Phone Input con Country Code */
+        /* Phone Input con Country Code SEARCHABLE */
         .phone-input-group {
             display: flex;
             gap: 10px;
+            position: relative;
         }
 
-        .phone-input-group select {
-            flex: 0 0 120px;
+        .country-code-wrapper {
+            flex: 0 0 140px;
+            position: relative;
         }
 
-        .phone-input-group input {
+        .country-code-select {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .country-code-select:hover,
+        .country-code-select.active {
+            border-color: #f59b22;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .country-code-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            margin-top: 5px;
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .country-code-dropdown.show {
+            display: block;
+        }
+
+        .country-code-search {
+            position: sticky;
+            top: 0;
+            padding: 12px;
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .country-code-search input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .country-code-search input:focus {
+            outline: none;
+            border-color: #f59b22;
+        }
+
+        .country-code-option {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .country-code-option:hover {
+            background: rgba(245, 155, 34, 0.1);
+        }
+
+        .country-code-option.selected {
+            background: linear-gradient(135deg, #f59b22, #ff8800);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .country-code-option.hidden {
+            display: none;
+        }
+
+        .phone-input-group input[type="tel"] {
             flex: 1;
         }
 
@@ -261,6 +349,12 @@
             transform: translateY(-1px);
         }
 
+        .waitlist-form button[type="submit"]:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .spam-note {
             font-size: 13px;
             color: #666;
@@ -280,18 +374,29 @@
             opacity: 1;
         }
 
-        .success-message {
-            display: none;
-            background: rgba(76, 175, 80, 0.1);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            color: #4CAF50;
+        .success-message,
+        .error-message {
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
             text-align: center;
+            display: none;
         }
 
-        .success-message.show {
+        .success-message {
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            color: #4CAF50;
+        }
+
+        .error-message {
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #f44336;
+        }
+
+        .success-message.show,
+        .error-message.show {
             display: block;
             animation: slideIn 0.5s ease;
         }
@@ -312,6 +417,25 @@
             margin-top: auto;
             background: #000000;
             padding: 30px 80px 20px;
+        }
+
+        /* Scrollbar personalizado para el dropdown */
+        .country-code-dropdown::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .country-code-dropdown::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .country-code-dropdown::-webkit-scrollbar-thumb {
+            background: rgba(245, 155, 34, 0.5);
+            border-radius: 10px;
+        }
+
+        .country-code-dropdown::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 155, 34, 0.8);
         }
 
         @media (max-width: 900px) {
@@ -374,7 +498,7 @@
                 flex-direction: column;
             }
 
-            .phone-input-group select {
+            .country-code-wrapper {
                 flex: 1;
             }
         }
@@ -416,14 +540,11 @@
                     <i class="fas fa-check-circle"></i> <span data-lang-es="¡Gracias! Revisa tu email para confirmar." data-lang-en="Thank you! Check your email to confirm."></span>
                 </div>
 
-                <form id="waitlistForm" action="https://formsubmit.co/deybijimene94@gmail.com" method="POST">
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> <span id="errorText"></span>
+                </div>
 
-                    <!-- CONFIGURACIÓN OCULTA DE FORMSUBMIT -->
-                    <input type="hidden" name="_cc" value="joaquinurzuad@gmail.com">
-                    <input type="hidden" name="_next" value="https://www.deepxperience.cl/gracias.html">
-                    <input type="hidden" name="_subject" value="🎉 Nueva persona en lista de espera - Travesía 2026">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="box">
+                <form id="waitlistForm">
 
                     <!-- CAMPOS DEL FORMULARIO -->
 
@@ -441,42 +562,47 @@
                         <label for="pais" data-lang-es="País *" data-lang-en="Country *"></label>
                         <select id="pais" name="pais" required>
                             <option value="">-- <span data-lang-es="Selecciona tu país" data-lang-en="Select your country"></span> --</option>
-                            <option value="+54">🇦🇷 Argentina (+54)</option>
-                            <option value="+55">🇧🇷 Brasil (+55)</option>
-                            <option value="+56" selected>🇨🇱 Chile (+56)</option>
-                            <option value="+57">🇨🇴 Colombia (+57)</option>
-                            <option value="+506">🇨🇷 Costa Rica (+506)</option>
-                            <option value="+593">🇪🇨 Ecuador (+593)</option>
-                            <option value="+34">🇪🇸 España (+34)</option>
-                            <option value="+1">🇺🇸 Estados Unidos (+1)</option>
-                            <option value="+52">🇲🇽 México (+52)</option>
-                            <option value="+507">🇵🇦 Panamá (+507)</option>
-                            <option value="+51">🇵🇪 Perú (+51)</option>
-                            <option value="+598">🇺🇾 Uruguay (+598)</option>
-                            <option value="+58">🇻🇪 Venezuela (+58)</option>
-                            <option value="otro" data-lang-es="Otro país" data-lang-en="Other country">🌍 Otro / Other</option>
+                            <option value="Argentina">🇦🇷 Argentina</option>
+                            <option value="Brasil">🇧🇷 Brasil</option>
+                            <option value="Chile" selected>🇨🇱 Chile</option>
+                            <option value="Colombia">🇨🇴 Colombia</option>
+                            <option value="Costa Rica">🇨🇷 Costa Rica</option>
+                            <option value="Ecuador">🇪🇨 Ecuador</option>
+                            <option value="España">🇪🇸 España</option>
+                            <option value="Estados Unidos">🇺🇸 Estados Unidos</option>
+                            <option value="México">🇲🇽 México</option>
+                            <option value="Panamá">🇵🇦 Panamá</option>
+                            <option value="Perú">🇵🇪 Perú</option>
+                            <option value="Uruguay">🇺🇾 Uruguay</option>
+                            <option value="Venezuela">🇻🇪 Venezuela</option>
+                            <option value="Alemania">🇩🇪 Alemania</option>
+                            <option value="Francia">🇫🇷 Francia</option>
+                            <option value="Italia">🇮🇹 Italia</option>
+                            <option value="Portugal">🇵🇹 Portugal</option>
+                            <option value="Reino Unido">🇬🇧 Reino Unido</option>
+                            <option value="Canadá">🇨🇦 Canadá</option>
+                            <option value="Australia">🇦🇺 Australia</option>
+                            <option value="Otro" data-lang-es="Otro país" data-lang-en="Other country">🌍 Otro / Other</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="telefono" data-lang-es="Teléfono (opcional)" data-lang-en="Phone (optional)"></label>
                         <div class="phone-input-group">
-                            <select id="countryCode" name="codigo_pais">
-                                <option value="+54">🇦🇷 +54</option>
-                                <option value="+55">🇧🇷 +55</option>
-                                <option value="+56" selected>🇨🇱 +56</option>
-                                <option value="+57">🇨🇴 +57</option>
-                                <option value="+506">🇨🇷 +506</option>
-                                <option value="+593">🇪🇨 +593</option>
-                                <option value="+34">🇪🇸 +34</option>
-                                <option value="+1">🇺🇸 +1</option>
-                                <option value="+52">🇲🇽 +52</option>
-                                <option value="+507">🇵🇦 +507</option>
-                                <option value="+51">🇵🇪 +51</option>
-                                <option value="+598">🇺🇾 +598</option>
-                                <option value="+58">🇻🇪 +58</option>
-                            </select>
-                            <input type="tel" id="telefono" name="telefono" placeholder="" data-placeholder-es="9 1234 5678" data-placeholder-en="9 1234 5678">
+                            <div class="country-code-wrapper">
+                                <div class="country-code-select" id="countryCodeSelect">
+                                    <span id="selectedCode">🇨🇱 +56</span>
+                                    <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                                </div>
+                                <div class="country-code-dropdown" id="countryCodeDropdown">
+                                    <div class="country-code-search">
+                                        <input type="text" id="countryCodeSearch" placeholder="Buscar país...">
+                                    </div>
+                                    <div id="countryCodeOptions"></div>
+                                </div>
+                                <input type="hidden" id="countryCode" name="codigo_pais" value="+56">
+                            </div>
+                            <input type="tel" id="telefono" name="telefono" placeholder="" data-placeholder-es="912345678" data-placeholder-en="912345678">
                         </div>
                     </div>
 
@@ -484,8 +610,8 @@
                         <label for="interes" data-lang-es="¿Qué tipo de experiencia te interesa?" data-lang-en="What type of experience interests you?"></label>
                         <select id="interes" name="experiencia_interes">
                             <option value="" data-lang-es="Selecciona una opción" data-lang-en="Select an option">-- Selecciona --</option>
-                            <option value="Patagonia" data-lang-es="Patagonia" data-lang-en="Patagonia">Patagonia</option>
-                            <option value="Azores" data-lang-es="Azores" data-lang-en="Azores">Azores</option>
+                            <option value="Patagonia">Patagonia</option>
+                            <option value="Azores">Azores</option>
                             <option value="Buceo" data-lang-es="Buceo" data-lang-en="Diving">Buceo / Diving</option>
                             <option value="Trekking">Trekking</option>
                             <option value="Todas" data-lang-es="Todas las experiencias" data-lang-en="All experiences">Todas / All</option>
@@ -508,10 +634,191 @@
         </div>
     </main>
 
-    <!-- JavaScript para Language Toggle -->
+    <!-- JavaScript Principal -->
     <script>
         let currentLang = 'es';
 
+        // Lista completa de países con códigos
+        const countryCodes = [
+            { code: '+93', country: 'Afghanistan', flag: '🇦🇫' },
+            { code: '+355', country: 'Albania', flag: '🇦🇱' },
+            { code: '+49', country: 'Alemania', flag: '🇩🇪' },
+            { code: '+376', country: 'Andorra', flag: '🇦🇩' },
+            { code: '+244', country: 'Angola', flag: '🇦🇴' },
+            { code: '+54', country: 'Argentina', flag: '🇦🇷' },
+            { code: '+374', country: 'Armenia', flag: '🇦🇲' },
+            { code: '+61', country: 'Australia', flag: '🇦🇺' },
+            { code: '+43', country: 'Austria', flag: '🇦🇹' },
+            { code: '+994', country: 'Azerbaiyán', flag: '🇦🇿' },
+            { code: '+973', country: 'Bahréin', flag: '🇧🇭' },
+            { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+            { code: '+375', country: 'Bielorrusia', flag: '🇧🇾' },
+            { code: '+32', country: 'Bélgica', flag: '🇧🇪' },
+            { code: '+501', country: 'Belice', flag: '🇧🇿' },
+            { code: '+591', country: 'Bolivia', flag: '🇧🇴' },
+            { code: '+387', country: 'Bosnia', flag: '🇧🇦' },
+            { code: '+55', country: 'Brasil', flag: '🇧🇷' },
+            { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
+            { code: '+855', country: 'Camboya', flag: '🇰🇭' },
+            { code: '+237', country: 'Camerún', flag: '🇨🇲' },
+            { code: '+1', country: 'Canadá', flag: '🇨🇦' },
+            { code: '+56', country: 'Chile', flag: '🇨🇱' },
+            { code: '+86', country: 'China', flag: '🇨🇳' },
+            { code: '+357', country: 'Chipre', flag: '🇨🇾' },
+            { code: '+57', country: 'Colombia', flag: '🇨🇴' },
+            { code: '+82', country: 'Corea del Sur', flag: '🇰🇷' },
+            { code: '+506', country: 'Costa Rica', flag: '🇨🇷' },
+            { code: '+385', country: 'Croacia', flag: '🇭🇷' },
+            { code: '+53', country: 'Cuba', flag: '🇨🇺' },
+            { code: '+45', country: 'Dinamarca', flag: '🇩🇰' },
+            { code: '+593', country: 'Ecuador', flag: '🇪🇨' },
+            { code: '+20', country: 'Egipto', flag: '🇪🇬' },
+            { code: '+503', country: 'El Salvador', flag: '🇸🇻' },
+            { code: '+971', country: 'Emiratos Árabes', flag: '🇦🇪' },
+            { code: '+421', country: 'Eslovaquia', flag: '🇸🇰' },
+            { code: '+386', country: 'Eslovenia', flag: '🇸🇮' },
+            { code: '+34', country: 'España', flag: '🇪🇸' },
+            { code: '+1', country: 'Estados Unidos', flag: '🇺🇸' },
+            { code: '+372', country: 'Estonia', flag: '🇪🇪' },
+            { code: '+251', country: 'Etiopía', flag: '🇪🇹' },
+            { code: '+63', country: 'Filipinas', flag: '🇵🇭' },
+            { code: '+358', country: 'Finlandia', flag: '🇫🇮' },
+            { code: '+33', country: 'Francia', flag: '🇫🇷' },
+            { code: '+995', country: 'Georgia', flag: '🇬🇪' },
+            { code: '+30', country: 'Grecia', flag: '🇬🇷' },
+            { code: '+502', country: 'Guatemala', flag: '🇬🇹' },
+            { code: '+504', country: 'Honduras', flag: '🇭🇳' },
+            { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+            { code: '+36', country: 'Hungría', flag: '🇭🇺' },
+            { code: '+91', country: 'India', flag: '🇮🇳' },
+            { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+            { code: '+98', country: 'Irán', flag: '🇮🇷' },
+            { code: '+964', country: 'Iraq', flag: '🇮🇶' },
+            { code: '+353', country: 'Irlanda', flag: '🇮🇪' },
+            { code: '+354', country: 'Islandia', flag: '🇮🇸' },
+            { code: '+972', country: 'Israel', flag: '🇮🇱' },
+            { code: '+39', country: 'Italia', flag: '🇮🇹' },
+            { code: '+81', country: 'Japón', flag: '🇯🇵' },
+            { code: '+962', country: 'Jordania', flag: '🇯🇴' },
+            { code: '+7', country: 'Kazajistán', flag: '🇰🇿' },
+            { code: '+254', country: 'Kenia', flag: '🇰🇪' },
+            { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+            { code: '+371', country: 'Letonia', flag: '🇱🇻' },
+            { code: '+961', country: 'Líbano', flag: '🇱🇧' },
+            { code: '+370', country: 'Lituania', flag: '🇱🇹' },
+            { code: '+352', country: 'Luxemburgo', flag: '🇱🇺' },
+            { code: '+60', country: 'Malasia', flag: '🇲🇾' },
+            { code: '+356', country: 'Malta', flag: '🇲🇹' },
+            { code: '+212', country: 'Marruecos', flag: '🇲🇦' },
+            { code: '+52', country: 'México', flag: '🇲🇽' },
+            { code: '+377', country: 'Mónaco', flag: '🇲🇨' },
+            { code: '+505', country: 'Nicaragua', flag: '🇳🇮' },
+            { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+            { code: '+47', country: 'Noruega', flag: '🇳🇴' },
+            { code: '+64', country: 'Nueva Zelanda', flag: '🇳🇿' },
+            { code: '+31', country: 'Países Bajos', flag: '🇳🇱' },
+            { code: '+92', country: 'Pakistán', flag: '🇵🇰' },
+            { code: '+507', country: 'Panamá', flag: '🇵🇦' },
+            { code: '+595', country: 'Paraguay', flag: '🇵🇾' },
+            { code: '+51', country: 'Perú', flag: '🇵🇪' },
+            { code: '+48', country: 'Polonia', flag: '🇵🇱' },
+            { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+            { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+            { code: '+44', country: 'Reino Unido', flag: '🇬🇧' },
+            { code: '+420', country: 'República Checa', flag: '🇨🇿' },
+            { code: '+1', country: 'República Dominicana', flag: '🇩🇴' },
+            { code: '+40', country: 'Rumania', flag: '🇷🇴' },
+            { code: '+7', country: 'Rusia', flag: '🇷🇺' },
+            { code: '+966', country: 'Arabia Saudita', flag: '🇸🇦' },
+            { code: '+381', country: 'Serbia', flag: '🇷🇸' },
+            { code: '+65', country: 'Singapur', flag: '🇸🇬' },
+            { code: '+27', country: 'Sudáfrica', flag: '🇿🇦' },
+            { code: '+46', country: 'Suecia', flag: '🇸🇪' },
+            { code: '+41', country: 'Suiza', flag: '🇨🇭' },
+            { code: '+66', country: 'Tailandia', flag: '🇹🇭' },
+            { code: '+886', country: 'Taiwán', flag: '🇹🇼' },
+            { code: '+255', country: 'Tanzania', flag: '🇹🇿' },
+            { code: '+90', country: 'Turquía', flag: '🇹🇷' },
+            { code: '+380', country: 'Ucrania', flag: '🇺🇦' },
+            { code: '+598', country: 'Uruguay', flag: '🇺🇾' },
+            { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
+            { code: '+84', country: 'Vietnam', flag: '🇻🇳' }
+        ];
+
+        // Inicializar dropdown de códigos de país
+        function initCountryCodeDropdown() {
+            const optionsContainer = document.getElementById('countryCodeOptions');
+
+            countryCodes.forEach((item, index) => {
+                const option = document.createElement('div');
+                option.className = 'country-code-option';
+                if (item.code === '+56') option.classList.add('selected');
+                option.dataset.code = item.code;
+                option.dataset.country = item.country.toLowerCase();
+                option.innerHTML = `${item.flag} ${item.country} ${item.code}`;
+
+                option.addEventListener('click', () => selectCountryCode(item, option));
+                optionsContainer.appendChild(option);
+            });
+        }
+
+        // Seleccionar código de país
+        function selectCountryCode(item, optionElement) {
+            document.getElementById('selectedCode').textContent = `${item.flag} ${item.code}`;
+            document.getElementById('countryCode').value = item.code;
+
+            // Update selected state
+            document.querySelectorAll('.country-code-option').forEach(opt => opt.classList.remove('selected'));
+            optionElement.classList.add('selected');
+
+            // Close dropdown
+            document.getElementById('countryCodeDropdown').classList.remove('show');
+            document.getElementById('countryCodeSelect').classList.remove('active');
+        }
+
+        // Toggle dropdown
+        document.getElementById('countryCodeSelect').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = document.getElementById('countryCodeDropdown');
+            const select = document.getElementById('countryCodeSelect');
+
+            dropdown.classList.toggle('show');
+            select.classList.toggle('active');
+
+            if (dropdown.classList.contains('show')) {
+                document.getElementById('countryCodeSearch').focus();
+            }
+        });
+
+        // Search functionality
+        document.getElementById('countryCodeSearch').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const options = document.querySelectorAll('.country-code-option');
+
+            options.forEach(option => {
+                const country = option.dataset.country;
+                const code = option.dataset.code.toLowerCase();
+
+                if (country.includes(searchTerm) || code.includes(searchTerm)) {
+                    option.classList.remove('hidden');
+                } else {
+                    option.classList.add('hidden');
+                }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('countryCodeDropdown');
+            const select = document.getElementById('countryCodeSelect');
+
+            if (!e.target.closest('.country-code-wrapper')) {
+                dropdown.classList.remove('show');
+                select.classList.remove('active');
+            }
+        });
+
+        // Language switcher
         function switchLanguage(lang) {
             currentLang = lang;
 
@@ -539,22 +846,14 @@
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Auto-sync country code with country selection
-        document.getElementById('pais').addEventListener('change', function() {
-            const countryCode = this.value;
-            if (countryCode && countryCode !== 'otro') {
-                document.getElementById('countryCode').value = countryCode;
-            }
-        });
-
-        // Load saved language preference
+        // Initialize on page load
         window.addEventListener('DOMContentLoaded', () => {
+            initCountryCodeDropdown();
+
             const savedLang = localStorage.getItem('preferredLanguage') || 'es';
             if (savedLang !== 'es') {
                 switchLanguage(savedLang);
             }
-
-            // Set initial placeholders
             switchLanguage(savedLang);
         });
     </script>

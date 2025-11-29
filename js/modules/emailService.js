@@ -192,9 +192,13 @@ export class FormValidator {
   }
 
   static validatePhone(phone) {
-    // Validación básica para números chilenos
+    // Validación flexible para números internacionales
     if (!phone) return true; // Opcional
-    const phoneRegex = /^(\+?56)?[\s-]?9[\s-]?\d{4}[\s-]?\d{4}$/;
+
+    // Aceptar números de 6 a 15 dígitos (estándar internacional)
+    // Permitir espacios, guiones y paréntesis opcionales
+    const phoneRegex = /^[\d\s\-()]{6,20}$/;
+
     return phoneRegex.test(phone);
   }
 
