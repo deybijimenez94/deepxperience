@@ -2285,3 +2285,173 @@ footer {
     font-size: 24px;
   }
 }
+
+/* ============================================
+   PRICE INFO & CTA ENHANCEMENTS
+   ============================================ */
+.price-info {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, rgba(245, 155, 34, 0.1), rgba(0, 212, 255, 0.1));
+  border-left: 4px solid var(--color-experiencias);
+  border-radius: var(--border-radius-sm);
+}
+
+.price-label {
+  font-size: var(--font-size-lg);
+  color: var(--color-titulos-principales);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.price-label strong {
+  color: var(--color-experiencias);
+  font-size: var(--font-size-xl);
+}
+
+/* CTA Actions Group */
+.cta-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.cta-actions-group .btn-base {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-actions-group .btn-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #ffffff;
+}
+
+.cta-actions-group .btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+
+.cta-actions-group .btn-email {
+  background: linear-gradient(135deg, #EA4335, #C5221F);
+  color: #ffffff;
+}
+
+.cta-actions-group .btn-email:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(234, 67, 53, 0.4);
+}
+
+/* Multiple Contact Options */
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.contact-option-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.contact-option-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-experiencias);
+  transform: translateY(-5px);
+}
+
+.contact-option-card i {
+  font-size: var(--font-size-3xl);
+  color: var(--color-experiencias);
+  margin-bottom: var(--spacing-sm);
+}
+
+.contact-option-card h4 {
+  font-family: var(--font-titulos-principales);
+  font-size: var(--font-size-xl);
+  color: var(--color-titulos-principales);
+  margin-bottom: var(--spacing-xs);
+}
+
+.contact-option-card p {
+  font-size: var(--font-size-sm);
+  color: var(--color-parrafos);
+  margin-bottom: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .contact-options {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-actions-group .btn-base {
+    font-size: var(--font-size-sm);
+    padding: 14px 20px;
+  }
+}
+
+/* ============================================
+   NEWSLETTER MESSAGES
+   ============================================ */
+.newsletter-message {
+  margin-top: var(--spacing-sm);
+  padding: 12px 16px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: center;
+  opacity: 1;
+  transition: opacity var(--transition-base);
+  animation: slideInUp 0.3s ease;
+}
+
+.newsletter-message--success {
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  color: #4CAF50;
+}
+
+.newsletter-message--error {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.5);
+  color: #F44336;
+}
+
+.newsletter-message--info {
+  background: rgba(33, 150, 243, 0.2);
+  border: 1px solid rgba(33, 150, 243, 0.5);
+  color: #2196F3;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}

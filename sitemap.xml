@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Página Principal -->
+  <url>
+    <loc>https://www.deepxperience.cl/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sección Nosotros -->
+  <url>
+    <loc>https://www.deepxperience.cl/#sobre-nosotros</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sección Experiencias -->
+  <url>
+    <loc>https://www.deepxperience.cl/#experiencias</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Sección Contacto -->
+  <url>
+    <loc>https://www.deepxperience.cl/#contacto</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Lista de Espera -->
+  <url>
+    <loc>https://www.deepxperience.cl/lista-espera.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Página de Agradecimiento -->
+  <url>
+    <loc>https://www.deepxperience.cl/gracias.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Términos y Condiciones -->
+  <url>
+    <loc>https://www.deepxperience.cl/terminos-y-condiciones.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Política de Privacidad -->
+  <url>
+    <loc>https://www.deepxperience.cl/politica-de-privacidad.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Política de Cookies -->
+  <url>
+    <loc>https://www.deepxperience.cl/politica-de-cookies.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Política de Cancelación -->
+  <url>
+    <loc>https://www.deepxperience.cl/politica-de-cancelacion.html</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- PDF Itinerario Patagonia Norte -->
+  <url>
+    <loc>https://www.deepxperience.cl/PDF/Experiencias%20Fiordocumau.pdf</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

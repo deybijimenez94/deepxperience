@@ -1,0 +1,35 @@
+# robots.txt para DeepXperience
+# Permitir acceso a todos los bots de búsqueda
+
+User-agent: *
+Allow: /
+
+# Bloquear carpetas administrativas y privadas (si las tuvieras)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /.vscode/
+
+# Permitir específicamente recursos importantes
+Allow: /Imagenes/
+Allow: /Iconos/
+Allow: /PDF/
+Allow: /js/
+Allow: /*.css
+Allow: /*.js
+
+# Sitemap
+Sitemap: https://www.deepxperience.cl/sitemap.xml
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Evitar sobrecarga del servidor
+Crawl-delay: 1

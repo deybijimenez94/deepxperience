@@ -9,6 +9,7 @@ import { ModalManager } from './modules/modal.js';
 import { NavigationManager } from './modules/navigation.js';
 import { ScrollManager } from './modules/scroll.js';
 import { LazyLoadManager, preloadCriticalResources } from './modules/lazyload.js';
+import { NewsletterManager } from './modules/newsletter.js';
 
 class DeepXperienceApp {
   constructor() {
@@ -37,6 +38,7 @@ class DeepXperienceApp {
       this.initModals();
       this.initNavigation();
       this.initScroll();
+      this.initNewsletter();
 
       // Hacer visible la página
       this.showPage();
@@ -98,6 +100,14 @@ class DeepXperienceApp {
       this.modules.scroll = new ScrollManager();
     } catch (error) {
       console.error('Error initializing ScrollManager:', error);
+    }
+  }
+
+  initNewsletter() {
+    try {
+      this.modules.newsletter = new NewsletterManager();
+    } catch (error) {
+      console.error('Error initializing NewsletterManager:', error);
     }
   }
 
