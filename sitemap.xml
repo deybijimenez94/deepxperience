@@ -84,12 +84,12 @@
     <priority>0.4</priority>
   </url>
 
-  <!-- PDF Itinerario Patagonia Norte -->
+  <!-- PDF Itinerario Fiordo Comau -->
   <url>
     <loc>https://www.deepxperience.cl/PDF/Experiencias%20Fiordocumau.pdf</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
 </urlset>

@@ -1,0 +1,17 @@
+# Configuración para descarga de PDFs en DeepXperience
+# Asegura que los PDFs se descarguen correctamente
+
+<FilesMatch "\.(pdf)$">
+    # Permitir acceso
+    Require all granted
+
+    # Headers para descarga
+    Header set Content-Type "application/pdf"
+    Header set Content-Disposition "attachment"
+
+    # Cache control
+    Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+
+# Habilitar CORS si es necesario
+Header set Access-Control-Allow-Origin "*"

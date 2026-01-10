@@ -2,21 +2,24 @@
 
 ## ✅ Correcciones Críticas Completadas
 
-### 1. **Contenido Corregido** ✅
-- ✅ **Modal Patagonia actualizado** para reflejar la experiencia real: **Fiordo Comau** (Patagonia Norte)
-- ✅ Eliminada la inconsistencia que mencionaba Torres del Paine
-- ✅ Highlights del tour actualizados: navegación, buceo, kayak, bosques templados
-- ✅ Duración correcta: 6 días / 5 noches
-- ✅ Punto de partida actualizado: Puerto Montt (no Punta Arenas)
-- ✅ Traducciones en inglés actualizadas para coincidir con el contenido español
+### 1. **Contenido Corregido Basado en PDF Real** ✅
+- ✅ **Modal actualizado con información del PDF oficial**: **Expedición Fiordo Comau 2025**
+- ✅ Contenido 100% preciso extraído del itinerario oficial
+- ✅ Highlights actualizados según PDF:
+  - 5 inmersiones guiadas (4 diurnas + 1 nocturna)
+  - Termas naturales en Cahuelmó y Porcelana
+  - Trekking cultural en Vodudahue
+  - 4 noches en embarcación equipada
+- ✅ Duración correcta: **5 días / 4 noches** (corregido de 6 días)
+- ✅ Incluye mención a guía certificada: Bárbara Sepúlveda
+- ✅ Traducciones EN/ES 100% sincronizadas con información del PDF
 
-### 2. **CTAs Optimizados** ✅
-- ✅ **3 opciones de contacto** implementadas en el modal:
-  - 💬 **WhatsApp**: Mensaje pre-escrito con contexto
-  - 📧 **Email**: Template con asunto y cuerpo predefinido
-  - 📝 **Lista de Espera**: Enlace directo a `lista-espera.html`
-- ✅ Información de **"Precio a consultar"** agregada con diseño destacado
-- ✅ Botones con iconos, colores distintivos y hover effects
+### 2. **CTAs Simplificados y Enfocados** ✅
+- ✅ **Modal limpio** con enfoque en el PDF del itinerario
+- ✅ CTAs de WhatsApp, Email y Lista removidos del modal (menos distracción)
+- ✅ **Un solo botón principal**: "Descargar Itinerario Completo PDF"
+- ✅ Información de **"Precio a consultar"** con mensaje claro de contacto
+- ✅ Botón de descarga destacado con estilo primario
 
 ### 3. **Optimizaciones SEO** ✅
 - ✅ **robots.txt** creado con configuración optimizada
