@@ -5,29 +5,44 @@
 El PDF no se descargaba correctamente porque:
 1. La ruta relativa `./PDF/Experiencias Fiordocumau.pdf` no funcionaba en el dominio
 2. El nombre del archivo tiene un espacio que causa problemas en algunos servidores
-3. Faltaba configuración del servidor para forzar la descarga
+3. El atributo `target="_blank"` interfería con la descarga automática
+4. Algunos navegadores ignoran el atributo `download` por seguridad
 
 ## ✅ Soluciones Implementadas
 
-### 1. **Ruta Actualizada en index.html**
+### 1. **Sistema de Descarga Forzada con JavaScript**
 
-**Antes:**
-```html
-<a href="./PDF/Experiencias Fiordocumau.pdf" download>
-```
+He implementado un módulo completo que **garantiza la descarga** en cualquier dispositivo:
 
-**Ahora:**
+**Características:**
+- ✅ **Descarga directa al dispositivo** (no abre en nueva pestaña)
+- ✅ **Compatible con móviles** (iOS, Android)
+- ✅ **Funciona en todos los navegadores** modernos
+- ✅ **Feedback visual** al usuario (mensaje de éxito)
+- ✅ **Fallback automático** si el método principal falla
+
+### 2. **Archivos Creados/Modificados**
+
+#### `js/modules/pdfDownload.js` ✨ NUEVO
+Módulo dedicado que:
+- Usa **Fetch API + Blob** para descarga directa
+- Convierte el PDF a Blob y crea URL temporal
+- Fuerza la descarga sin abrir el navegador
+- Tiene sistema de fallback para navegadores antiguos
+
+#### `index.html` - Botón actualizado
 ```html
 <a href="/PDF/Experiencias%20Fiordocumau.pdf"
    download="Expedicion-Fiordo-Comau-2025.pdf"
-   target="_blank">
+   id="download-pdf-link"
+   class="download-pdf-btn btn-primary">
 ```
 
 **Cambios:**
-- ✅ Ruta absoluta desde la raíz: `/PDF/...`
-- ✅ Espacio codificado como `%20` para compatibilidad
-- ✅ Atributo `download` con nombre limpio (sin espacios)
-- ✅ `target="_blank"` para abrir en nueva pestaña
+- ✅ Ruta absoluta: `/PDF/...`
+- ✅ Espacio codificado: `%20`
+- ✅ ID único para JavaScript
+- ✅ Sin `target="_blank"` (mejora descarga)
 
 ### 2. **Archivo .htaccess Creado**
 

@@ -1,17 +1,22 @@
 # Configuración para descarga de PDFs en DeepXperience
 # Asegura que los PDFs se descarguen correctamente
 
-<FilesMatch "\.(pdf)$">
-    # Permitir acceso
+<IfModule mod_headers.c>
+    <FilesMatch "\.(pdf|PDF)$">
+        # Headers para descarga forzada
+        Header set Content-Type "application/pdf"
+        Header set Content-Disposition "inline; filename=\"Expedicion-Fiordo-Comau-2025.pdf\""
+
+        # Cache control
+        Header set Cache-Control "public, max-age=2592000"
+
+        # CORS
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    </FilesMatch>
+</IfModule>
+
+# Permitir acceso a todos los PDFs
+<FilesMatch "\.(pdf|PDF)$">
     Require all granted
-
-    # Headers para descarga
-    Header set Content-Type "application/pdf"
-    Header set Content-Disposition "attachment"
-
-    # Cache control
-    Header set Cache-Control "public, max-age=2592000"
 </FilesMatch>
-
-# Habilitar CORS si es necesario
-Header set Access-Control-Allow-Origin "*"

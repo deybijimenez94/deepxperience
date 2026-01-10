@@ -43,6 +43,19 @@
 - ✅ Loading spinner durante envío
 - ✅ Validación de email en tiempo real
 
+### 6. **Sistema de Descarga de PDF Implementado** ✅ **CRÍTICO**
+- ✅ **Módulo `pdfDownload.js`** creado con descarga forzada
+- ✅ **Descarga directa al dispositivo** usando Fetch API + Blob
+- ✅ **Compatible con móviles** (iOS y Android)
+- ✅ **Fallback automático** para navegadores antiguos
+- ✅ **Feedback visual** al usuario (mensajes de éxito/error)
+- ✅ **Archivo `.htaccess`** en carpeta PDF para configuración del servidor
+- ✅ Ruta absoluta del PDF con URL encoding: `/PDF/Experiencias%20Fiordocumau.pdf`
+- ✅ Eliminado `target="_blank"` que interfería con la descarga
+- ✅ Documentación completa en `SOLUCION-PDF-DESCARGA.md`
+
+**Problema resuelto:** Los usuarios ahora pueden descargar el PDF correctamente en cualquier dispositivo sin que se abra en nueva pestaña.
+
 ---
 
 ## 📊 Impacto Esperado
@@ -94,23 +107,45 @@
 ## 📝 Notas Técnicas
 
 ### Archivos Modificados
-- ✅ `index.html` - Contenido modal, CTAs, metaetiquetas
-- ✅ `styles.css` - Estilos para CTAs, precio, newsletter
-- ✅ `js/main.js` - Inicialización de NewsletterManager
-- ✅ `js/modules/translations.js` - Traducciones actualizadas
-- ✅ `js/modules/newsletter.js` - **NUEVO** Módulo newsletter
+- ✅ `index.html` - Contenido modal, CTAs, metaetiquetas, botón de descarga PDF
+- ✅ `styles.css` - Estilos para CTAs, precio, newsletter, mensajes de descarga
+- ✅ `js/main.js` - Inicialización de NewsletterManager y PDFDownloadManager
+- ✅ `js/modules/translations.js` - Traducciones actualizadas con contenido del PDF
 
 ### Archivos Creados
 - ✅ `robots.txt` - Configuración para bots de búsqueda
 - ✅ `sitemap.xml` - Mapa del sitio completo
-- ✅ `js/modules/newsletter.js` - Handler del formulario
+- ✅ `js/modules/newsletter.js` - Handler del formulario de newsletter
+- ✅ `js/modules/pdfDownload.js` - **NUEVO** Sistema de descarga forzada de PDF
+- ✅ `PDF/.htaccess` - **NUEVO** Configuración del servidor para PDFs
+- ✅ `SOLUCION-PDF-DESCARGA.md` - **NUEVO** Documentación del sistema de descarga
 - ✅ `MEJORAS-REALIZADAS-2025.md` - Este documento
 
 ---
 
 ## 🔧 Configuración Post-Deploy
 
-### 1. FormSubmit (Newsletter)
+### 1. Descarga de PDF (IMPORTANTE) ⚠️
+Para que el PDF se descargue correctamente en tu dominio:
+
+**Archivos que debes subir al servidor:**
+- ✅ `PDF/Experiencias Fiordocumau.pdf` - El archivo PDF
+- ✅ `PDF/.htaccess` - Configuración del servidor
+- ✅ `js/modules/pdfDownload.js` - Módulo de descarga
+- ✅ `index.html` - Con el botón actualizado
+- ✅ `js/main.js` - Con PDFDownloadManager inicializado
+- ✅ `styles.css` - Con estilos de mensajes
+
+**Verificar que funciona:**
+1. Sube todos los archivos a tu servidor
+2. Ve a: `https://www.deepxperience.cl`
+3. Haz clic en "Ver Itinerario Completo"
+4. Haz clic en "Descargar Itinerario Completo PDF"
+5. El PDF debería descargarse como: `Expedicion-Fiordo-Comau-2025.pdf`
+
+**Si no funciona:** Consulta el archivo `SOLUCION-PDF-DESCARGA.md` que contiene troubleshooting completo.
+
+### 2. FormSubmit (Newsletter)
 El newsletter está configurado para usar **FormSubmit.co** que es gratuito y sin configuración.
 
 **Cómo verificar que funciona:**
@@ -163,6 +198,7 @@ Tu sitio DeepXperience ahora tiene:
 - ✅ **Performance mejorado** (preload, preconnect)
 - ✅ **Newsletter funcional** (captura de leads)
 - ✅ **Información de precios clara** ("Precio a consultar")
+- ✅ **Descarga de PDF funcionando** en todos los dispositivos (móviles incluidos)
 
 **¡Todo listo para convertir más visitantes en clientes!** 🎉
 

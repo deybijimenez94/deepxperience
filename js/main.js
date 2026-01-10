@@ -10,6 +10,7 @@ import { NavigationManager } from './modules/navigation.js';
 import { ScrollManager } from './modules/scroll.js';
 import { LazyLoadManager, preloadCriticalResources } from './modules/lazyload.js';
 import { NewsletterManager } from './modules/newsletter.js';
+import { PDFDownloadManager } from './modules/pdfDownload.js';
 
 class DeepXperienceApp {
   constructor() {
@@ -39,6 +40,7 @@ class DeepXperienceApp {
       this.initNavigation();
       this.initScroll();
       this.initNewsletter();
+      this.initPDFDownload();
 
       // Hacer visible la página
       this.showPage();
@@ -108,6 +110,14 @@ class DeepXperienceApp {
       this.modules.newsletter = new NewsletterManager();
     } catch (error) {
       console.error('Error initializing NewsletterManager:', error);
+    }
+  }
+
+  initPDFDownload() {
+    try {
+      this.modules.pdfDownload = new PDFDownloadManager();
+    } catch (error) {
+      console.error('Error initializing PDFDownloadManager:', error);
     }
   }
 
