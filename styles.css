@@ -1475,6 +1475,7 @@ footer {
   transition: all 0.4s ease;
   overflow-y: auto;
   padding: 40px 20px;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
 }
 
 .modal-overlay.active {
@@ -1698,6 +1699,14 @@ footer {
     width: 50px;
     height: 50px;
     font-size: 24px;
+    position: relative;
+    z-index: 1002;
+    background: none;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-toggle:active {
+    transform: scale(0.95);
   }
 
   .lang-selector {
@@ -1759,9 +1768,11 @@ footer {
   }
 
   .nav-links a {
-    font-size: 28px;
-    letter-spacing: 3px;
+    font-size: 26px;
+    letter-spacing: 2px;
     padding: 15px 30px;
+    line-height: 1.4;
+    text-align: center;
   }
 
   /* HERO MÓVIL */
@@ -2217,19 +2228,31 @@ footer {
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 15px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
+  }
+
+  .modal-faq-content {
+    padding: 20px 15px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
   }
 
   .modal-close {
-    top: 15px;
-    right: 15px;
-    font-size: 35px;
-    width: 44px;
-    height: 44px;
+    top: 10px;
+    right: 10px;
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
 
   .modal-text h2 {
@@ -2257,16 +2280,54 @@ footer {
     max-width: 100%;
   }
 
-  /* TOUCH TARGETS */
+  /* TOUCH TARGETS - Asegura 48x48px mínimo (WCAG AAA) */
   button,
   .cta-button,
   .experience-link,
   .quienes-somos-link,
   .cta-adventure-btn,
-  .download-pdf-btn {
-    min-width: 44px;
-    min-height: 44px;
+  .download-pdf-btn,
+  .btn-base,
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline,
+  .carousel-arrow,
+  .experience-carousel-arrow,
+  .faq-question,
+  .newsletter-form button,
+  .modal-close,
+  .menu-toggle {
+    min-width: 48px;
+    min-height: 48px;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(245, 155, 34, 0.3);
+  }
+
+  /* Links en el menú móvil */
+  .nav-links a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Botones de redes sociales */
+  .social-links a {
+    min-width: 50px !important;
+    min-height: 50px !important;
+  }
+
+  /* Mejora de legibilidad en pantallas pequeñas */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Evitar zoom no deseado en inputs */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* 16px previene auto-zoom en iOS */
   }
 }
 
@@ -2505,4 +2566,287 @@ footer {
 .download-pdf-btn.downloading {
   opacity: 0.7;
   pointer-events: none;
+}
+
+/* =========================================
+   FAQ MODAL
+   ========================================= */
+
+.modal-faq-content {
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  color: var(--color-white);
+  position: relative;
+}
+
+.modal-faq-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(245, 155, 34, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.modal-faq-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+}
+
+.modal-faq-container .section-icon {
+  width: 60px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+  opacity: 0.9;
+}
+
+.modal-faq-container .section-title-center {
+  text-align: center;
+  font-size: var(--font-size-xxl);
+  margin-bottom: 60px;
+  color: var(--color-white);
+  letter-spacing: 2px;
+}
+
+.faq-accordion {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-base);
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 155, 34, 0.3);
+  transform: translateX(5px);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 25px 30px;
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: all var(--transition-base);
+  font-family: var(--font-primary);
+}
+
+.faq-question:hover {
+  color: var(--color-primary);
+}
+
+.faq-question:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.faq-question span:first-child {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.faq-icon {
+  font-size: 32px;
+  font-weight: 300;
+  transition: transform var(--transition-base);
+  color: var(--color-primary);
+  min-width: 32px;
+  text-align: center;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  color: var(--color-secondary);
+}
+
+.faq-question[aria-expanded="true"] {
+  color: var(--color-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+  padding: 0 30px;
+  opacity: 0;
+}
+
+.faq-answer.active {
+  max-height: 600px;
+  padding: 20px 30px 30px;
+  opacity: 1;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-base);
+  font-family: var(--font-secondary);
+}
+
+.faq-answer a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  transition: color var(--transition-base);
+}
+
+.faq-answer a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-item {
+  animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.15s; }
+.faq-item:nth-child(3) { animation-delay: 0.2s; }
+.faq-item:nth-child(4) { animation-delay: 0.25s; }
+.faq-item:nth-child(5) { animation-delay: 0.3s; }
+.faq-item:nth-child(6) { animation-delay: 0.35s; }
+.faq-item:nth-child(7) { animation-delay: 0.4s; }
+.faq-item:nth-child(8) { animation-delay: 0.45s; }
+.faq-item:nth-child(9) { animation-delay: 0.5s; }
+.faq-item:nth-child(10) { animation-delay: 0.55s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-faq-container {
+    padding: 30px 15px;
+  }
+
+  .modal-faq-container .section-title-center {
+    font-size: var(--font-size-xl);
+    margin-bottom: 40px;
+  }
+
+  .faq-question {
+    padding: 18px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .faq-answer {
+    padding: 0 16px;
+  }
+
+  .faq-answer.active {
+    padding: 15px 16px 25px;
+  }
+
+  .faq-answer p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .faq-icon {
+    font-size: 28px;
+    min-width: 32px;
+    flex-shrink: 0;
+  }
+
+  .faq-item:hover {
+    transform: none;
+  }
+
+  .faq-item {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-question {
+    padding: 16px 14px;
+    font-size: 15px;
+    gap: 12px;
+    line-height: 1.4;
+  }
+
+  .faq-answer {
+    padding: 0 14px;
+  }
+
+  .faq-answer.active {
+    padding: 12px 14px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .faq-icon {
+    font-size: 26px;
+    min-width: 28px;
+  }
+
+  /* Optimización adicional de modales para pantallas muy pequeñas */
+  .modal-content {
+    width: 98%;
+    padding: 20px 15px;
+    max-height: 92vh;
+  }
+
+  .modal-faq-content {
+    width: 98%;
+    padding: 15px 10px;
+    max-height: 92vh;
+  }
+
+  .modal-text h2 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .modal-text h3 {
+    font-size: 20px;
+  }
+
+  .modal-text p,
+  .modal-text li {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }

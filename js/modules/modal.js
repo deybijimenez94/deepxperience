@@ -24,6 +24,13 @@ export class ModalManager {
       'close-modal'
     );
 
+    // Setup modal FAQ
+    this.setupModal(
+      'open-faq',
+      'modal-faq',
+      'close-faq'
+    );
+
     // Cerrar modales con ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {

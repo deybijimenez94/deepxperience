@@ -81,7 +81,30 @@ export const translations = {
     "modal-about-title": "ABOUT US",
     "modal-about-p1": "We chose this path because we believe that traveling is much more than checking destinations off a map. <strong>It's about connecting, discovering, transforming.</strong> And that's exactly what we do every day.",
     "modal-about-p2": "Every sunrise on a <strong>peak</strong>, every conversation with locals, every challenging route we design carries our <strong>imprint.</strong> We demand more from ourselves because we know you are trusting us with your days off, your investment, your desire to <strong>feel alive.</strong> And we don't take that lightly. At Deep Xperience, we transform trips into <strong>unforgettable</strong> moments. Because every great story begins with us.",
-    "modal-about-team": "DeepXperience Team"
+    "modal-about-team": "DeepXperience Team",
+
+    // FAQ Section
+    "faq-title": "FREQUENTLY ASKED QUESTIONS",
+    "faq-q1-text": "Do I need previous diving experience for the expedition?",
+    "faq-a1": "Yes, for the Comau Fjord Expedition you need a diving certification (Open Water or higher). Cold water diving in Patagonia requires previous experience. If you're not certified, we can recommend certification courses before the expedition.",
+    "faq-q2-text": "What is the group size?",
+    "faq-a2": "We work with small groups of maximum 8 people to ensure a personalized experience, diving safety, and minimize environmental impact. This allows us to adapt the expedition pace and offer individual attention from our guide Bárbara Sepúlveda.",
+    "faq-q3-text": "When are the best dates to travel?",
+    "faq-a3": "The recommended season for Comau Fjord is November to March (southern hemisphere summer). December to February offer the best weather and underwater visibility, though they are the most requested. We recommend booking 3-4 months in advance.",
+    "faq-q4-text": "What does the expedition price include?",
+    "faq-a4": "The price includes: full navigation from Puerto Montt, 4 nights on equipped vessel, 5 guided dives (4 daytime + 1 night dive), all meals (breakfasts, brunches, dinners and snacks), access to natural hot springs, guided trekking, certified guide and experienced captain. NOT included: flights to Chile, personal diving equipment, alcoholic beverages, tips.",
+    "faq-q5-text": "What is the cancellation policy?",
+    "faq-a5": "Free cancellation up to 60 days before start date. Between 59-30 days: 50% refund. Less than 30 days: no refund. We recommend purchasing cancellation insurance. See <a href=\"politica-de-cancelacion.html\" target=\"_blank\">full policy</a>.",
+    "faq-q6-text": "What fitness level do I need?",
+    "faq-a6": "Intermediate fitness level required. Activities include cold water diving (8-12°C), 2-3 hour hikes on irregular terrain, and navigation. You should be comfortable swimming and have good cardiovascular health. If you have specific medical conditions, consult us before booking.",
+    "faq-q7-text": "Can I travel solo?",
+    "faq-a7": "Absolutely! Many of our travelers come alone and find adventure companions in the group. Cabins on the vessel are shared (2 people), but if you prefer a private cabin, a single supplement applies. Contact us for availability and pricing.",
+    "faq-q8-text": "Do I need to bring my own diving equipment?",
+    "faq-a8": "Not mandatory. We provide all basic technical equipment: tanks, weights, 7mm wetsuits. However, if you have your own regulator, dive computer, mask and fins, we recommend bringing them for comfort. We'll send you a detailed equipment list upon booking confirmation.",
+    "faq-q9-text": "What kind of marine life will we see?",
+    "faq-a9": "Comau Fjord is famous for its cold-water corals, sponge gardens, giant anemones, starfish, octopuses, and an incredible variety of nudibranchs. With luck, we'll also see sea lions, southern dolphins, and if it's the season, humpback whales. Visibility can vary between 5-15 meters depending on weather.",
+    "faq-q10-text": "How do I book my spot on the expedition?",
+    "faq-a10": "It's very simple: 1) Contact us via <a href=\"https://wa.me/56958055597\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>, email, or fill out the contact form. 2) We'll send you detailed information and date availability. 3) To confirm your booking, a 30% deposit of the total value is required. 4) The remaining balance is paid 30 days before the expedition. And that's it, your Patagonia adventure awaits!"
   },
   es: {
     "nav-home": "Inicio",
@@ -160,6 +183,29 @@ export const translations = {
     "modal-about-title": "NOSOTROS",
     "modal-about-p1": "Elegimos este camino porque creemos que viajar es mucho más que marcar destinos en un mapa. <strong>Es conectar, descubrir, transformarse. </strong>Y eso es exactamente lo que hacemos cada día.",
     "modal-about-p2": "Cada amanecer en una <strong>cima</strong> cada conversación con locales, cada ruta desafiante que diseñamos lleva nuestra <strong>huella.</strong> Nos exigimos más porque sabemos que estás confiando en nosotros tus días libres, tu inversión, tus ganas de <strong>sentirte vivo.</strong> Y eso no lo tomamos a la ligera. En Deep Experience, transformamos viajes en momentos <strong>inolvidables.</strong> Porque cada gran historia comienza con nosotros.",
-    "modal-about-team": "Equipo DeepXperience"
+    "modal-about-team": "Equipo DeepXperience",
+
+    // FAQ Section
+    "faq-title": "PREGUNTAS FRECUENTES",
+    "faq-q1-text": "¿Necesito experiencia previa en buceo para la expedición?",
+    "faq-a1": "Sí, para la Expedición Fiordo Comau necesitas certificación de buceo (Open Water o superior). El buceo en aguas frías de la Patagonia requiere experiencia previa. Si no estás certificado, podemos recomendarte cursos de certificación antes de la expedición.",
+    "faq-q2-text": "¿Cuál es el tamaño de los grupos?",
+    "faq-a2": "Trabajamos con grupos pequeños de máximo 8 personas para garantizar una experiencia personalizada, seguridad en las inmersiones y minimizar el impacto ambiental. Esto nos permite adaptar el ritmo de la expedición y ofrecer atención individualizada de nuestra guía Bárbara Sepúlveda.",
+    "faq-q3-text": "¿Cuándo son las mejores fechas para viajar?",
+    "faq-a3": "La temporada recomendada para el Fiordo Comau es de noviembre a marzo (verano austral). Los meses de diciembre a febrero ofrecen el mejor clima y visibilidad submarina, aunque son los más solicitados. Te recomendamos reservar con 3-4 meses de anticipación.",
+    "faq-q4-text": "¿Qué incluye el precio de la expedición?",
+    "faq-a4": "El precio incluye: navegación completa desde Puerto Montt, 4 noches en embarcación equipada, 5 inmersiones guiadas (4 diurnas + 1 nocturna), todas las comidas (desayunos, brunchs, cenas y snacks), acceso a termas naturales, trekking guiado, guía certificada y capitán experimentado. NO incluye: vuelos hasta Chile, equipo personal de buceo, bebidas alcohólicas, propinas.",
+    "faq-q5-text": "¿Cuál es la política de cancelación?",
+    "faq-a5": "Cancelación gratuita hasta 60 días antes de la fecha de inicio. Entre 59-30 días: 50% de reembolso. Menos de 30 días: no hay reembolso. Recomendamos contratar seguro de cancelación. Ver <a href=\"politica-de-cancelacion.html\" target=\"_blank\">política completa</a>.",
+    "faq-q6-text": "¿Qué nivel de condición física necesito?",
+    "faq-a6": "Se requiere condición física intermedia. Las actividades incluyen buceo en aguas frías (8-12°C), caminatas de 2-3 horas en terrenos irregulares, y navegación. Debes estar cómodo nadando y tener buena salud cardiovascular. Si tienes condiciones médicas específicas, consúltanos antes de reservar.",
+    "faq-q7-text": "¿Puedo viajar solo/a?",
+    "faq-a7": "¡Por supuesto! Muchos de nuestros viajeros vienen solos y encuentran compañeros de aventura en el grupo. Las cabinas en la embarcación son compartidas (2 personas), pero si prefieres cabina privada, aplica un suplemento individual. Contáctanos para conocer disponibilidad y precios.",
+    "faq-q8-text": "¿Necesito traer mi propio equipo de buceo?",
+    "faq-a8": "No es obligatorio. Nosotros proporcionamos todo el equipo técnico básico: tanques, plomos, trajes de neopreno de 7mm. Sin embargo, si tienes tu propio regulador, computadora de buceo, máscara y aletas, te recomendamos traerlos por comodidad. Te enviaremos una lista detallada de equipo recomendado al confirmar tu reserva.",
+    "faq-q9-text": "¿Qué tipo de vida marina veremos?",
+    "faq-a9": "El Fiordo Comau es famoso por sus corales de agua fría, jardines de esponjas, anémonas gigantes, estrellas de mar, pulpos, y una increíble variedad de nudibranquios. Con suerte, también veremos lobos marinos, delfines australes y si es temporada, ballenas jorobadas. La visibilidad puede variar entre 5-15 metros dependiendo del clima.",
+    "faq-q10-text": "¿Cómo reservo mi lugar en la expedición?",
+    "faq-a10": "Es muy simple: 1) Contáctanos por <a href=\"https://wa.me/56958055597\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>, email o llena el formulario de contacto. 2) Te enviaremos información detallada y disponibilidad de fechas. 3) Para confirmar tu reserva, se requiere un depósito del 30% del valor total. 4) El saldo restante se paga 30 días antes de la expedición. ¡Y listo, tu aventura en la Patagonia te espera!"
   }
 };
