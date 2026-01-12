@@ -73,12 +73,26 @@ class WaitlistForm {
   async handleSubmit(event) {
     event.preventDefault();
 
+    // Capturar intereses múltiples (checkboxes)
+    const interesesCheckboxes = this.form.querySelectorAll('input[name="intereses[]"]:checked');
+    const interesesArray = Array.from(interesesCheckboxes).map(cb => cb.value);
+
     // Obtener datos del formulario
     const formData = {
       nombre: this.form.querySelector("#nombre").value.trim(),
       email: this.form.querySelector("#email").value.trim(),
+      fecha_preferida: this.form.querySelector("#fecha1").value,
+      fecha_alternativa: this.form.querySelector("#fecha2")?.value || "",
+      flexibilidad: this.form.querySelector("#flexibilidad").value,
+      num_personas: this.form.querySelector("#personas").value,
+      certificacion_buceo: this.form.querySelector("#certificacion").value,
+      presupuesto_estimado: this.form.querySelector("#presupuesto")?.value || "No especificado",
+      pais: this.form.querySelector("#pais").value,
+      codigo_pais: this.form.querySelector("#countryCode")?.value || "",
       telefono: this.form.querySelector("#telefono").value.trim(),
-      experiencia_interes: this.form.querySelector("#interes").value,
+      intereses: interesesArray.join(", ") || "No especificado",
+      destino_preferido: this.form.querySelector("#destino")?.value || "Sin preferencia",
+      comentarios: this.form.querySelector("#comentarios")?.value.trim() || "",
     };
 
     // Validar
@@ -204,15 +218,27 @@ class WaitlistForm {
   setSubmitting(isSubmitting) {
     if (!this.submitButton) return;
 
+    const currentLang = document.documentElement.lang || 'es';
+    const labels = {
+      es: {
+        submitting: 'Enviando...',
+        submit: 'Reservar mi expedición'
+      },
+      en: {
+        submitting: 'Sending...',
+        submit: 'Book my expedition'
+      }
+    };
+
     if (isSubmitting) {
       this.submitButton.disabled = true;
       this.submitButton.innerHTML = `
-        <i class="fas fa-spinner fa-spin"></i> Enviando...
+        <i class="fas fa-spinner fa-spin"></i> ${labels[currentLang].submitting}
       `;
     } else {
       this.submitButton.disabled = false;
       this.submitButton.innerHTML = `
-        <i class="fas fa-paper-plane"></i> Guarda mi lugar
+        <i class="fas fa-calendar-check"></i> ${labels[currentLang].submit}
       `;
     }
   }

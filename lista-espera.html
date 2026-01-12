@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Espera - DeepXperience</title>
+    <title>Reserva tu Experiencia - DeepXperience</title>
     <meta name="description"
-        content="Únete a la lista de espera de DeepXperience y asegura tu lugar en nuestras próximas aventuras.">
+        content="Reserva tu experiencia con DeepXperience y asegura tu lugar en nuestras próximas expediciones.">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -36,10 +36,11 @@
 
         .waitlist-container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 80px;
-            max-width: 1200px;
+            gap: 40px;
+            max-width: 900px;
             width: 100%;
             animation: fadeInUp 0.8s ease;
         }
@@ -57,15 +58,15 @@
         }
 
         .waitlist-info {
-            flex: 1;
-            max-width: 500px;
+            width: 100%;
+            text-align: center;
         }
 
         .waitlist-info h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 56px;
+            font-size: 48px;
             letter-spacing: 4px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: #ffffff;
             line-height: 1.1;
         }
@@ -75,43 +76,51 @@
         }
 
         .waitlist-info p {
-            font-size: 18px;
-            line-height: 1.8;
+            font-size: 16px;
+            line-height: 1.6;
             color: #cccccc;
             margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .waitlist-benefits {
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .waitlist-benefits ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 30px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .waitlist-benefits li {
-            font-size: 16px;
-            padding: 12px 0;
+            font-size: 14px;
             color: #cccccc;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .waitlist-benefits li i {
             color: #f59b22;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .waitlist-form {
-            flex: 1;
-            max-width: 500px;
+            width: 100%;
+            max-width: 900px;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 50px 40px;
+            padding: 40px 35px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             position: relative;
         }
@@ -169,27 +178,63 @@
             text-align: center;
         }
 
+        /* Grid de formulario - 2 columnas en desktop */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 0;
         }
 
         .form-group label {
             display: block;
-            font-size: 14px;
+            font-size: 13px;
             color: #cccccc;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
+        }
+
+        /* Separadores de sección */
+        .form-section-title {
+            grid-column: 1 / -1;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #f59b22;
+            margin: 10px 0 5px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(245, 155, 34, 0.2);
+            font-weight: 600;
+        }
+
+        .form-section-title:first-child {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
         }
 
         .waitlist-form input,
         .waitlist-form select {
             width: 100%;
-            padding: 16px 20px;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
             font-family: 'Roboto', sans-serif;
             transition: all 0.3s ease;
         }
@@ -230,18 +275,18 @@
         }
 
         .country-code-wrapper {
-            flex: 0 0 140px;
+            flex: 0 0 120px;
             position: relative;
         }
 
         .country-code-select {
             width: 100%;
-            padding: 16px 20px;
-            border-radius: 10px;
+            padding: 12px 14px;
+            border-radius: 8px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -326,18 +371,19 @@
 
         .waitlist-form button[type="submit"] {
             width: 100%;
-            padding: 18px 40px;
+            padding: 14px 30px;
             background: linear-gradient(135deg, #f59b22, #ff8800);
             color: #000000;
             border: none;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: bold;
             letter-spacing: 2px;
             text-transform: uppercase;
             cursor: pointer;
             transition: all 0.4s ease;
-            margin-top: 10px;
+            margin-top: 20px;
+            grid-column: 1 / -1;
         }
 
         .waitlist-form button[type="submit"]:hover {
@@ -353,6 +399,98 @@
             opacity: 0.6;
             cursor: not-allowed;
             transform: none;
+        }
+
+        /* Checkbox Group Styles */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .checkbox-group {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 42px;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(245, 155, 34, 0.3);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #f59b22;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label span {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.2;
+        }
+
+        .checkbox-label:has(input:checked) {
+            background: rgba(245, 155, 34, 0.1);
+            border-color: #f59b22;
+        }
+
+        .checkbox-label:has(input:checked) span {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Textarea Styles */
+        .waitlist-form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            resize: vertical;
+            min-height: 80px;
+            transition: all 0.3s ease;
+        }
+
+        .waitlist-form textarea:focus {
+            outline: none;
+            border-color: #f59b22;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .waitlist-form textarea::placeholder {
+            color: #666;
+        }
+
+        /* Date Input Styles */
+        .waitlist-form input[type="date"] {
+            color-scheme: dark;
+            cursor: pointer;
+        }
+
+        .waitlist-form input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
         }
 
         .spam-note {
@@ -444,30 +582,22 @@
             }
 
             .waitlist-container {
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .waitlist-info {
-                text-align: center;
-                max-width: 100%;
+                gap: 30px;
             }
 
             .waitlist-info h1 {
-                font-size: 42px;
+                font-size: 40px;
             }
 
-            .waitlist-benefits {
-                max-width: 400px;
-                margin: 30px auto 0;
+            .waitlist-info p {
+                font-size: 15px;
             }
 
-            .waitlist-benefits li {
-                justify-content: center;
+            .waitlist-benefits ul {
+                gap: 12px 20px;
             }
 
             .waitlist-form {
-                max-width: 100%;
                 padding: 40px 30px;
             }
 
@@ -477,13 +607,26 @@
         }
 
         @media (max-width: 480px) {
+            .waitlist-container {
+                gap: 25px;
+            }
+
             .waitlist-info h1 {
-                font-size: 36px;
+                font-size: 32px;
                 letter-spacing: 2px;
             }
 
             .waitlist-info p {
-                font-size: 16px;
+                font-size: 14px;
+            }
+
+            .waitlist-benefits ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .waitlist-benefits li {
+                justify-content: center;
             }
 
             .waitlist-form {
@@ -491,7 +634,11 @@
             }
 
             .waitlist-form h2 {
-                font-size: 28px;
+                font-size: 26px;
+            }
+
+            .form-grid {
+                gap: 14px;
             }
 
             .phone-input-group {
@@ -500,6 +647,20 @@
 
             .country-code-wrapper {
                 flex: 1;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .checkbox-label {
+                padding: 12px 14px;
+            }
+
+            .form-section-title {
+                font-size: 11px;
+                margin: 8px 0 4px;
             }
         }
     </style>
@@ -511,16 +672,16 @@
         <div class="waitlist-container">
             <!-- Info Section -->
             <div class="waitlist-info">
-                <h1 data-lang-es="TRAVESÍA <span class='highlight'>2026</span>" data-lang-en="JOURNEY <span class='highlight'>2026</span>"></h1>
-                <p data-lang-es="La aventura de viaje más memorable próxima a revelarse, con grandes sorpresas. Asegura tu lugar exclusivo en el lanzamiento."
-                   data-lang-en="The most memorable travel adventure coming soon, with big surprises. Secure your exclusive spot at launch."></p>
+                <h1 data-lang-es="RESERVA TU <span class='highlight'>EXPERIENCIA</span>" data-lang-en="BOOK YOUR <span class='highlight'>EXPERIENCE</span>">RESERVA TU <span class='highlight'>EXPERIENCIA</span></h1>
+                <p data-lang-es="Completa el formulario y asegura tu lugar en las expediciones más memorables de 2025."
+                   data-lang-en="Fill out the form and secure your spot on the most memorable expeditions of 2025.">Completa el formulario y asegura tu lugar en las expediciones más memorables de 2025.</p>
 
                 <div class="waitlist-benefits">
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Acceso anticipado a nuevas experiencias" data-lang-en="Early access to new experiences"></span></li>
-                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Descuentos exclusivos para miembros" data-lang-en="Exclusive member discounts"></span></li>
-                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Información privilegiada de destinos" data-lang-en="Privileged destination information"></span></li>
-                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Prioridad en reservas limitadas" data-lang-en="Priority in limited bookings"></span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Confirmación en 24 horas" data-lang-en="Confirmation within 24 hours">Confirmación en 24 horas</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Cotización personalizada" data-lang-en="Personalized quote">Cotización personalizada</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Asesoría de expertos" data-lang-en="Expert guidance">Asesoría de expertos</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-lang-es="Plazas limitadas" data-lang-en="Limited spots">Plazas limitadas</span></li>
                     </ul>
                 </div>
             </div>
@@ -533,8 +694,8 @@
                     <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
                 </div>
 
-                <h2 data-lang-es="ÚNETE A LA LISTA" data-lang-en="JOIN THE LIST"></h2>
-                <p data-lang-es="Asegura tu lugar ahora" data-lang-en="Secure your spot now"></p>
+                <h2 data-lang-es="ASEGURA TU LUGAR" data-lang-en="SECURE YOUR SPOT"></h2>
+                <p data-lang-es="Reserva tu expedición 2025" data-lang-en="Book your 2025 expedition"></p>
 
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle"></i> <span data-lang-es="¡Gracias! Revisa tu email para confirmar." data-lang-en="Thank you! Check your email to confirm."></span>
@@ -545,22 +706,85 @@
                 </div>
 
                 <form id="waitlistForm">
+                    <div class="form-grid">
+                        <!-- INFORMACIÓN PERSONAL -->
+                        <div class="form-section-title" data-lang-es="📋 Información Personal" data-lang-en="📋 Personal Information">📋 Información Personal</div>
 
-                    <!-- CAMPOS DEL FORMULARIO -->
+                        <div class="form-group">
+                            <label for="nombre" data-lang-es="Nombre completo *" data-lang-en="Full name *"></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="" data-placeholder-es="Tu nombre" data-placeholder-en="Your name" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="nombre" data-lang-es="Nombre completo *" data-lang-en="Full name *"></label>
-                        <input type="text" id="nombre" name="nombre" placeholder="" data-placeholder-es="Tu nombre" data-placeholder-en="Your name" required>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="" data-placeholder-es="tu@email.com" data-placeholder-en="your@email.com" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" placeholder="" data-placeholder-es="tu@email.com" data-placeholder-en="your@email.com" required>
-                    </div>
+                        <!-- FECHAS DE VIAJE -->
+                        <div class="form-section-title" data-lang-es="📅 Fechas de Viaje" data-lang-en="📅 Travel Dates">📅 Fechas de Viaje</div>
 
-                    <div class="form-group">
-                        <label for="pais" data-lang-es="País *" data-lang-en="Country *"></label>
-                        <select id="pais" name="pais" required>
+                        <div class="form-group">
+                            <label for="fecha1" data-lang-es="Fecha preferida *" data-lang-en="Preferred date *"></label>
+                            <input type="date" id="fecha1" name="fecha_preferida" min="2025-02-01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fecha2" data-lang-es="Fecha alternativa" data-lang-en="Alternative date"></label>
+                            <input type="date" id="fecha2" name="fecha_alternativa" min="2025-02-01">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="flexibilidad" data-lang-es="Flexibilidad de fechas" data-lang-en="Date flexibility"></label>
+                            <select id="flexibilidad" name="flexibilidad">
+                                <option value="fija" data-lang-es="Solo esas fechas específicas" data-lang-en="Only those specific dates">Solo esas fechas específicas</option>
+                                <option value="semana" data-lang-es="Flexible ±1 semana" data-lang-en="Flexible ±1 week">Flexible ±1 semana</option>
+                                <option value="mes" data-lang-es="Flexible ±1 mes" data-lang-en="Flexible ±1 month">Flexible ±1 mes</option>
+                                <option value="temporada" data-lang-es="Cualquier fecha en esa temporada" data-lang-en="Any date in that season">Cualquier fecha en esa temporada</option>
+                            </select>
+                        </div>
+
+                        <!-- DETALLES DEL GRUPO -->
+                        <div class="form-section-title" data-lang-es="👥 Detalles del Grupo" data-lang-en="👥 Group Details">👥 Detalles del Grupo</div>
+
+                        <div class="form-group">
+                            <label for="personas" data-lang-es="Número de personas *" data-lang-en="Number of people *"></label>
+                            <select id="personas" name="num_personas" required>
+                                <option value="1">1 persona</option>
+                                <option value="2">2 personas</option>
+                                <option value="3-4">3-4 personas</option>
+                                <option value="5-6">5-6 personas</option>
+                                <option value="7+" data-lang-es="7+ personas (grupo)" data-lang-en="7+ people (group)">7+ personas (grupo)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="certificacion" data-lang-es="Certificación de buceo *" data-lang-en="Diving certification *"></label>
+                            <select id="certificacion" name="certificacion_buceo" required>
+                                <option value="" data-lang-es="Selecciona tu nivel" data-lang-en="Select your level">-- Selecciona --</option>
+                                <option value="sin-certificar" data-lang-es="No tengo (necesito curso)" data-lang-en="I don't have (need course)">No tengo (necesito curso)</option>
+                                <option value="open-water">Open Water Diver</option>
+                                <option value="advanced">Advanced Open Water</option>
+                                <option value="rescue" data-lang-es="Rescue Diver o superior" data-lang-en="Rescue Diver or higher">Rescue Diver o superior</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="presupuesto" data-lang-es="Presupuesto estimado por persona (opcional)" data-lang-en="Estimated budget per person (optional)"></label>
+                            <select id="presupuesto" name="presupuesto_estimado">
+                                <option value="" data-lang-es="Prefiero no responder" data-lang-en="Prefer not to answer">Prefiero no responder</option>
+                                <option value="2000-2500">$2,000 - $2,500 USD</option>
+                                <option value="2500-3000">$2,500 - $3,000 USD</option>
+                                <option value="3000-3500">$3,000 - $3,500 USD</option>
+                                <option value="3500+" data-lang-es="$3,500+ USD" data-lang-en="$3,500+ USD">$3,500+ USD</option>
+                            </select>
+                        </div>
+
+                        <!-- CONTACTO -->
+                        <div class="form-section-title" data-lang-es="📞 Contacto" data-lang-en="📞 Contact">📞 Contacto</div>
+
+                        <div class="form-group">
+                            <label for="pais" data-lang-es="País *" data-lang-en="Country *"></label>
+                            <select id="pais" name="pais" required>
                             <option value="">-- <span data-lang-es="Selecciona tu país" data-lang-en="Select your country"></span> --</option>
                             <option value="Argentina">🇦🇷 Argentina</option>
                             <option value="Brasil">🇧🇷 Brasil</option>
@@ -583,48 +807,85 @@
                             <option value="Canadá">🇨🇦 Canadá</option>
                             <option value="Australia">🇦🇺 Australia</option>
                             <option value="Otro" data-lang-es="Otro país" data-lang-en="Other country">🌍 Otro / Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="telefono" data-lang-es="Teléfono (opcional)" data-lang-en="Phone (optional)"></label>
-                        <div class="phone-input-group">
-                            <div class="country-code-wrapper">
-                                <div class="country-code-select" id="countryCodeSelect">
-                                    <span id="selectedCode">🇨🇱 +56</span>
-                                    <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
-                                </div>
-                                <div class="country-code-dropdown" id="countryCodeDropdown">
-                                    <div class="country-code-search">
-                                        <input type="text" id="countryCodeSearch" placeholder="Buscar país...">
-                                    </div>
-                                    <div id="countryCodeOptions"></div>
-                                </div>
-                                <input type="hidden" id="countryCode" name="codigo_pais" value="+56">
-                            </div>
-                            <input type="tel" id="telefono" name="telefono" placeholder="" data-placeholder-es="912345678" data-placeholder-en="912345678">
+                            </select>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="interes" data-lang-es="¿Qué tipo de experiencia te interesa?" data-lang-en="What type of experience interests you?"></label>
-                        <select id="interes" name="experiencia_interes">
-                            <option value="" data-lang-es="Selecciona una opción" data-lang-en="Select an option">-- Selecciona --</option>
-                            <option value="Patagonia">Patagonia</option>
-                            <option value="Azores">Azores</option>
-                            <option value="Buceo" data-lang-es="Buceo" data-lang-en="Diving">Buceo / Diving</option>
-                            <option value="Trekking">Trekking</option>
-                            <option value="Todas" data-lang-es="Todas las experiencias" data-lang-en="All experiences">Todas / All</option>
-                        </select>
-                    </div>
+                        <div class="form-group full-width">
+                            <label for="telefono" data-lang-es="Teléfono (opcional)" data-lang-en="Phone (optional)"></label>
+                            <div class="phone-input-group">
+                                <div class="country-code-wrapper">
+                                    <div class="country-code-select" id="countryCodeSelect">
+                                        <span id="selectedCode">🇨🇱 +56</span>
+                                        <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+                                    </div>
+                                    <div class="country-code-dropdown" id="countryCodeDropdown">
+                                        <div class="country-code-search">
+                                            <input type="text" id="countryCodeSearch" placeholder="Buscar país...">
+                                        </div>
+                                        <div id="countryCodeOptions"></div>
+                                    </div>
+                                    <input type="hidden" id="countryCode" name="codigo_pais" value="+56">
+                                </div>
+                                <input type="tel" id="telefono" name="telefono" placeholder="" data-placeholder-es="912345678" data-placeholder-en="912345678">
+                            </div>
+                        </div>
 
-                    <button type="submit">
-                        <i class="fas fa-paper-plane"></i> <span data-lang-es="Guarda mi lugar" data-lang-en="Save my spot"></span>
-                    </button>
+                        <!-- PREFERENCIAS -->
+                        <div class="form-section-title" data-lang-es="⭐ Preferencias" data-lang-en="⭐ Preferences">⭐ Preferencias</div>
+
+                        <div class="form-group full-width">
+                            <label data-lang-es="Actividades de interés" data-lang-en="Activities of interest"></label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="buceo">
+                                    <span data-lang-es="Buceo" data-lang-en="Diving">Buceo</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="termas">
+                                    <span data-lang-es="Termas naturales" data-lang-en="Natural hot springs">Termas naturales</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="trekking">
+                                    <span>Trekking</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="fotografia">
+                                    <span data-lang-es="Fotografía submarina" data-lang-en="Underwater photography">Fotografía submarina</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="conservacion">
+                                    <span data-lang-es="Conservación marina" data-lang-en="Marine conservation">Conservación marina</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="intereses[]" value="avistamiento">
+                                    <span data-lang-es="Avistamiento de vida silvestre" data-lang-en="Wildlife watching">Avistamiento de vida silvestre</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destino" data-lang-es="Destino preferido" data-lang-en="Preferred destination"></label>
+                            <select id="destino" name="destino_preferido">
+                                <option value="" data-lang-es="Sin preferencia" data-lang-en="No preference">Sin preferencia</option>
+                                <option value="Patagonia">Patagonia</option>
+                                <option value="Azores">Azores</option>
+                                <option value="ambos" data-lang-es="Me interesan ambos" data-lang-en="Interested in both">Me interesan ambos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="comentarios" data-lang-es="Comentarios o necesidades especiales (opcional)" data-lang-en="Comments or special needs (optional)"></label>
+                            <textarea id="comentarios" name="comentarios" rows="3" placeholder="" data-placeholder-es="Ej: Restricciones alimentarias, necesidades médicas, etc." data-placeholder-en="E.g., Dietary restrictions, medical needs, etc."></textarea>
+                        </div>
+
+                        <button type="submit">
+                            <i class="fas fa-calendar-check"></i> <span data-lang-es="Reservar mi expedición" data-lang-en="Book my expedition"></span>
+                        </button>
+                    </div>
                 </form>
 
                 <p class="spam-note">
-                    <i class="fas fa-shield-alt"></i> <span data-lang-es="No enviamos spam. Puedes darte de baja cuando quieras." data-lang-en="We don't send spam. You can unsubscribe anytime."></span>
+                    <i class="fas fa-info-circle"></i> <span data-lang-es="Recibirás una confirmación por email con los próximos pasos para tu reserva. No compartimos tus datos." data-lang-en="You'll receive an email confirmation with next steps for your booking. We don't share your data."></span>
                 </p>
 
                 <a href="index.html">
