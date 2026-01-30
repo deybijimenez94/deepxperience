@@ -12,6 +12,10 @@ class WaitlistForm {
     this.submitButton = this.form?.querySelector('button[type="submit"]');
     this.successMessage = document.getElementById("successMessage");
 
+    // Rate limiting: 60 segundos entre envíos
+    this.lastSubmit = 0;
+    this.cooldown = 60000; // 1 minuto en milisegundos
+
     this.init();
   }
 
@@ -72,6 +76,18 @@ class WaitlistForm {
 
   async handleSubmit(event) {
     event.preventDefault();
+
+    // ✅ Rate limiting: Prevenir spam
+    const now = Date.now();
+    const timeSinceLastSubmit = now - this.lastSubmit;
+
+    if (timeSinceLastSubmit < this.cooldown) {
+      const remainingSeconds = Math.ceil((this.cooldown - timeSinceLastSubmit) / 1000);
+      this.showError(
+        `Por favor espera ${remainingSeconds} segundos antes de enviar nuevamente`
+      );
+      return;
+    }
 
     // Capturar intereses múltiples (checkboxes)
     const interesesCheckboxes = this.form.querySelectorAll('input[name="intereses[]"]:checked');
@@ -163,6 +179,9 @@ class WaitlistForm {
         para confirmar tu registro.
       `;
     }
+
+    // Actualizar timestamp para rate limiting
+    this.lastSubmit = Date.now();
 
     // Limpiar formulario
     this.form.reset();

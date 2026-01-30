@@ -10,6 +10,9 @@ export class NewsletterManager {
     this.form = null;
     this.submitButton = null;
     this.emailInput = null;
+    // Rate limiting: 60 segundos entre envíos
+    this.lastSubmit = 0;
+    this.cooldown = 60000; // 1 minuto en milisegundos
     this.init();
   }
 
@@ -34,6 +37,19 @@ export class NewsletterManager {
   async handleSubmit(event) {
     event.preventDefault();
 
+    // ✅ Rate limiting: Prevenir spam
+    const now = Date.now();
+    const timeSinceLastSubmit = now - this.lastSubmit;
+
+    if (timeSinceLastSubmit < this.cooldown) {
+      const remainingSeconds = Math.ceil((this.cooldown - timeSinceLastSubmit) / 1000);
+      this.showMessage(
+        `Por favor espera ${remainingSeconds} segundos antes de enviar nuevamente`,
+        'error'
+      );
+      return;
+    }
+
     const email = this.emailInput.value.trim();
 
     // Validar email
@@ -54,6 +70,9 @@ export class NewsletterManager {
 
       this.showMessage('¡Gracias por suscribirte! 🎉', 'success');
       this.form.reset();
+
+      // Actualizar timestamp para rate limiting
+      this.lastSubmit = Date.now();
 
       // Opcional: Guardar en localStorage para no mostrar el form de nuevo
       localStorage.setItem('newsletter_subscribed', 'true');

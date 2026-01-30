@@ -19,7 +19,7 @@ Allow: /*.css
 Allow: /*.js
 
 # Sitemap
-Sitemap: https://www.deepxperience.cl/sitemap.xml
+Sitemap: https://deepxperiences.cl/sitemap.xml
 
 # Bots específicos
 User-agent: Googlebot

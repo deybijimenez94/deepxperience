@@ -33,7 +33,9 @@ export class LanguageManager {
       document.querySelectorAll('[data-lang-key]').forEach(el => {
         const key = el.getAttribute('data-lang-key');
         if (langData[key]) {
-          el.innerHTML = langData[key];
+          // ✅ FIX XSS: Usar textContent previene inyección de código
+          // Si necesitas HTML, usa DOMPurify.sanitize() antes de innerHTML
+          el.textContent = langData[key];
         }
       });
 

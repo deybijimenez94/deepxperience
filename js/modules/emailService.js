@@ -55,11 +55,32 @@ export class EmailService {
     }
 
     const templateParams = {
+      // Información Personal
       to_email: userData.email,
       user_name: userData.nombre,
       user_email: userData.email,
+
+      // Fechas de Viaje
+      fecha_preferida: userData.fecha_preferida || "No especificada",
+      fecha_alternativa: userData.fecha_alternativa || "Sin fecha alternativa",
+      flexibilidad: userData.flexibilidad || "No especificada",
+
+      // Detalles del Grupo
+      num_personas: userData.num_personas || "1",
+      certificacion_buceo: userData.certificacion_buceo || "No especificada",
+      presupuesto_estimado: userData.presupuesto_estimado || "No especificado",
+
+      // Contacto
+      pais: userData.pais || "No especificado",
+      codigo_pais: userData.codigo_pais || "",
       user_phone: userData.telefono || "No proporcionado",
-      experience_interest: userData.experiencia_interes || "No especificado",
+
+      // Preferencias
+      intereses: userData.intereses || "No especificado",
+      destino_preferido: userData.destino_preferido || "Sin preferencia",
+      comentarios: userData.comentarios || "Sin comentarios",
+
+      // Metadata
       current_year: new Date().getFullYear(),
       current_date: new Date().toLocaleDateString("es-CL", {
         year: "numeric",
@@ -92,14 +113,37 @@ export class EmailService {
     }
 
     const templateParams = {
+      // Destinatarios
       to_email: "info@deepxperience.cl",
       cc_email: "joaquinurzuad@gmail.com",
+
+      // Información Personal
       user_name: userData.nombre,
       user_email: userData.email,
+
+      // Fechas de Viaje
+      fecha_preferida: userData.fecha_preferida || "No especificada",
+      fecha_alternativa: userData.fecha_alternativa || "Sin fecha alternativa",
+      flexibilidad: userData.flexibilidad || "No especificada",
+
+      // Detalles del Grupo
+      num_personas: userData.num_personas || "1",
+      certificacion_buceo: userData.certificacion_buceo || "No especificada",
+      presupuesto_estimado: userData.presupuesto_estimado || "No especificado",
+
+      // Contacto
+      pais: userData.pais || "No especificado",
+      codigo_pais: userData.codigo_pais || "",
       user_phone: userData.telefono || "No proporcionado",
-      experience_interest: userData.experiencia_interes || "No especificado",
+
+      // Preferencias
+      intereses: userData.intereses || "No especificado",
+      destino_preferido: userData.destino_preferido || "Sin preferencia",
+      comentarios: userData.comentarios || "Sin comentarios",
+
+      // Metadata
       submission_date: new Date().toLocaleString("es-CL"),
-      message_preview: `Nueva persona en lista de espera: ${userData.nombre}`,
+      message_preview: `Nueva pre-reserva: ${userData.nombre} - ${userData.fecha_preferida || "Sin fecha"} - ${userData.num_personas} personas`,
     };
 
     try {
@@ -156,11 +200,26 @@ export class EmailService {
 
     const dataToSend = {
       timestamp: new Date().toISOString(),
+      // Información Personal
       nombre: userData.nombre,
       email: userData.email,
+      // Fechas de Viaje
+      fecha_preferida: userData.fecha_preferida || "",
+      fecha_alternativa: userData.fecha_alternativa || "",
+      flexibilidad: userData.flexibilidad || "",
+      // Detalles del Grupo
+      num_personas: userData.num_personas || "",
+      certificacion_buceo: userData.certificacion_buceo || "",
+      presupuesto_estimado: userData.presupuesto_estimado || "",
+      // Contacto
+      pais: userData.pais || "",
+      codigo_pais: userData.codigo_pais || "",
       telefono: userData.telefono || "",
-      experiencia_interes: userData.experiencia_interes || "",
-      source: "Lista de Espera 2026",
+      // Preferencias
+      intereses: userData.intereses || "",
+      destino_preferido: userData.destino_preferido || "",
+      comentarios: userData.comentarios || "",
+      source: "Pre-Reserva 2025",
     };
 
     try {
