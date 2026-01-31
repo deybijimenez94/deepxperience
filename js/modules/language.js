@@ -33,9 +33,8 @@ export class LanguageManager {
       document.querySelectorAll('[data-lang-key]').forEach(el => {
         const key = el.getAttribute('data-lang-key');
         if (langData[key]) {
-          // ✅ FIX XSS: Usar textContent previene inyección de código
-          // Si necesitas HTML, usa DOMPurify.sanitize() antes de innerHTML
-          el.textContent = langData[key];
+          // Sanitizar HTML permitiendo solo tags seguros
+          el.innerHTML = this.sanitizeHTML(langData[key]);
         }
       });
 
@@ -121,5 +120,67 @@ export class LanguageManager {
 
   getPreferredLanguage() {
     return localStorage.getItem('preferred-lang') || 'es';
+  }
+
+  /**
+   * Sanitiza HTML permitiendo solo tags seguros
+   * Previene XSS mientras permite formato básico
+   */
+  sanitizeHTML(html) {
+    // Lista blanca de tags permitidos
+    const allowedTags = ['span', 'br', 'strong', 'b', 'i', 'em', 'a'];
+    const allowedAttributes = {
+      'span': ['class'],
+      'a': ['href', 'target', 'rel']
+    };
+
+    // Crear elemento temporal para parsear HTML
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    // Función recursiva para limpiar nodos
+    const cleanNode = (node) => {
+      const nodesToRemove = [];
+
+      node.childNodes.forEach(child => {
+        if (child.nodeType === Node.ELEMENT_NODE) {
+          const tagName = child.tagName.toLowerCase();
+
+          // Si el tag no está permitido, reemplazar por su contenido de texto
+          if (!allowedTags.includes(tagName)) {
+            nodesToRemove.push(child);
+          } else {
+            // Limpiar atributos no permitidos
+            const attrs = Array.from(child.attributes);
+            attrs.forEach(attr => {
+              const allowed = allowedAttributes[tagName] || [];
+              if (!allowed.includes(attr.name)) {
+                child.removeAttribute(attr.name);
+              }
+            });
+
+            // Validar href en links para prevenir javascript:
+            if (tagName === 'a') {
+              const href = child.getAttribute('href');
+              if (href && (href.startsWith('javascript:') || href.startsWith('data:'))) {
+                child.removeAttribute('href');
+              }
+            }
+
+            // Recursivamente limpiar hijos
+            cleanNode(child);
+          }
+        }
+      });
+
+      // Remover nodos no permitidos (reemplazar por texto)
+      nodesToRemove.forEach(node => {
+        const text = document.createTextNode(node.textContent);
+        node.parentNode.replaceChild(text, node);
+      });
+    };
+
+    cleanNode(temp);
+    return temp.innerHTML;
   }
 }
