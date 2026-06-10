@@ -91,5 +91,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
+<!-- Landing Bautismo Submarino -->
+<url>
+    <loc>https://deepxperiences.cl/bautismo-submarino.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+</url>
 </urlset>
