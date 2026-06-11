@@ -860,3 +860,6 @@ body.bautismo-page {
         transition: none;
     }
 }
+body.bautismo-page {
+  opacity: 1 !important;
+}
