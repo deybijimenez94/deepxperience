@@ -162,3 +162,37 @@
         });
     }
 })();
+
+// Galería carrusel
+const galleryCarousel = document.querySelector('.gallery-carousel');
+const galleryTrack = document.querySelector('.gallery-carousel__track');
+const galleryPrev = document.querySelector('.gallery-carousel__button--prev');
+const galleryNext = document.querySelector('.gallery-carousel__button--next');
+
+if (galleryCarousel && galleryTrack && galleryPrev && galleryNext) {
+    let currentIndex = 0;
+    const slides = Array.from(galleryTrack.querySelectorAll('img'));
+
+    const updateGalleryCarousel = () => {
+        if (!slides.length) return;
+
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(galleryTrack).gap) || 0;
+        const offset = currentIndex * (slideWidth + gap);
+
+        galleryTrack.style.transform = `translateX(-${offset}px)`;
+    };
+
+    galleryPrev.addEventListener('click', () => {
+        currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+        updateGalleryCarousel();
+    });
+
+    galleryNext.addEventListener('click', () => {
+        currentIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+        updateGalleryCarousel();
+    });
+
+    window.addEventListener('resize', updateGalleryCarousel);
+    updateGalleryCarousel();
+}
