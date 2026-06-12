@@ -32,6 +32,51 @@
         link.href = makeWhatsAppUrl(defaultMessage);
     });
 
+    document.querySelectorAll("[data-gallery-carousel]").forEach((carousel) => {
+        const track = carousel.querySelector("[data-gallery-track]");
+        const previousButton = carousel.querySelector("[data-gallery-prev]");
+        const nextButton = carousel.querySelector("[data-gallery-next]");
+        const counter = carousel.querySelector("[data-gallery-counter]");
+        const slides = track ? Array.from(track.children) : [];
+        let currentSlide = 0;
+
+        const updateCarousel = () => {
+            if (!track || slides.length === 0) {
+                return;
+            }
+
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            if (counter) {
+                counter.textContent = `${currentSlide + 1} / ${slides.length}`;
+            }
+
+            if (previousButton) {
+                previousButton.disabled = currentSlide === 0;
+            }
+
+            if (nextButton) {
+                nextButton.disabled = currentSlide === slides.length - 1;
+            }
+        };
+
+        if (previousButton) {
+            previousButton.addEventListener("click", () => {
+                currentSlide = Math.max(0, currentSlide - 1);
+                updateCarousel();
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener("click", () => {
+                currentSlide = Math.min(slides.length - 1, currentSlide + 1);
+                updateCarousel();
+            });
+        }
+
+        updateCarousel();
+    });
+
     const form = document.getElementById("bautismo-form");
     const status = document.getElementById("form-status");
 
@@ -162,37 +207,3 @@
         });
     }
 })();
-
-// Galería carrusel
-const galleryCarousel = document.querySelector('.gallery-carousel');
-const galleryTrack = document.querySelector('.gallery-carousel__track');
-const galleryPrev = document.querySelector('.gallery-carousel__button--prev');
-const galleryNext = document.querySelector('.gallery-carousel__button--next');
-
-if (galleryCarousel && galleryTrack && galleryPrev && galleryNext) {
-    let currentIndex = 0;
-    const slides = Array.from(galleryTrack.querySelectorAll('img'));
-
-    const updateGalleryCarousel = () => {
-        if (!slides.length) return;
-
-        const slideWidth = slides[0].getBoundingClientRect().width;
-        const gap = parseFloat(getComputedStyle(galleryTrack).gap) || 0;
-        const offset = currentIndex * (slideWidth + gap);
-
-        galleryTrack.style.transform = `translateX(-${offset}px)`;
-    };
-
-    galleryPrev.addEventListener('click', () => {
-        currentIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
-        updateGalleryCarousel();
-    });
-
-    galleryNext.addEventListener('click', () => {
-        currentIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
-        updateGalleryCarousel();
-    });
-
-    window.addEventListener('resize', updateGalleryCarousel);
-    updateGalleryCarousel();
-}
